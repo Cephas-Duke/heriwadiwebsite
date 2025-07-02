@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Heriwadi Christian Schools</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    /* Enhanced Top Bar */
+    .top-bar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 15px 0;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    
+    .top-bar .logo img {
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid white;
+      transition: transform 0.3s ease;
+    }
+    
+    .top-bar .logo img:hover {
+      transform: scale(1.1);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 15px;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    
+    .contact-item i {
+      color: #fff;
+      font-size: 18px;
+    }
+    
+    .contact-item span {
+      font-weight: 600;
+      color: #fff;
+    }
+    
+    .contact-item a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-item a:hover {
+      color: #ffd700;
+    }
+
+    /* Enhanced Navbar */
+    .navbar {
+      background: linear-gradient(135deg, #b00a0a 0%, #8B0000 100%);
+      padding: 15px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    
+    .navbar-brand {
+      color: #fff !important;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0 15px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -5px;
+      left: 50%;
+      background: #ffd700;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+      border-radius: 20px;
+      margin: 30px 0;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    .hero-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 8s ease-in-out;
+    }
+    
+    .hero-banner:hover img {
+      transform: scale(1.1);
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(176, 10, 10, 0.8), rgba(0, 0, 0, 0.4));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-content {
+      text-align: center;
+      color: white;
+      z-index: 2;
+    }
+    
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero-content p {
+      font-size: 1.4rem;
+      font-weight: 300;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    /* Filter Buttons */
+    .filter-container {
+      text-align: center;
+      margin: 50px 0;
+    }
+    
+    .filter-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      margin: 0 10px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, #b00a0a 0%, #8B0000 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      background: white;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-info {
+      color: white;
+      text-align: left;
+    }
+    
+    .gallery-info h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .gallery-info p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Loading Animation */
+    .gallery-item {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+    .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+    .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+    .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      margin: 5% auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: color 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      color: #ffd700;
+    }
+    
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .modal-nav:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .modal-prev {
+      left: 30px;
+    }
+    
+    .modal-next {
+      right: 30px;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 28px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .whatsapp-button:hover {
+      color: white;
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 80px;
+    }
+    
+    footer a {
+      color: #ffd700;
+      transition: color 0.3s ease;
+    }
+    
+    footer a:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .filter-btn {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 14px;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* Hide items initially for filtering */
+    .gallery-item[data-category]:not([data-category="all"]) {
+      display: none;
+    }
+    
+    .gallery-item[data-category="all"],
+    .gallery-item.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Logo -->
+          <div class="col-12 col-md-4 text-center text-md-left mb-3 mb-md-0">
+            <div class="logo">
+              <img src="gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" class="img-fluid">
+            </div>
+          </div>
+          <!-- Contact Info -->
+          <div class="col-12 col-md-8">
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div><span>Phone:</span> <a href="tel:+254723322449">+254723322449</a></div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div><span>Email:</span> <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div><span>Address:</span> <a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai, Maasai Lodge-Rimpa Road</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">Heriwadi Christian School</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About-us.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Admissions.html">Admissions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Contact-us.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="container">
+    <div class="hero-banner">
+      <img src="gallery/van-banner.jpg" alt="Gallery Banner">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1>Our Gallery</h1>
+          <p>Discover the vibrant life and memorable moments at Heriwadi Christian Schools</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="container">
+    <!-- Filter Buttons -->
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All Photos</button>
+      <button class="filter-btn" data-filter="school">School Life</button>
+      <button class="filter-btn" data-filter="graduation">Graduations</button>
+      <button class="filter-btn" data-filter="activities">Activities</button>
+      <button class="filter-btn" data-filter="trips">Educational Trips</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- School Life Images -->
+      <div class="gallery-item" data-category="school">
+        <img src="gallery/cbc.jpg" alt="CBC Learning">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Learning</h4>
+            <p>Modern curriculum in action</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="gallery/class.jpg" alt="Classroom Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Classroom Learning</h4>
+            <p>Interactive education environment</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="gallery/pp1.jpg" alt="Pre-Primary Education">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Pre-Primary Classes</h4>
+            <p>Early childhood development</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graduation Images -->
+      <div class="gallery-item" data-category="graduation">
+        <img src="gallery/1st-grad.jpg" alt="First Graduation">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Graduation Day</h4>
+            <p>Celebrating academic achievements</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="gallery/grad20231.jpg" alt="2023 Graduation">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>2023 Graduation Ceremony</h4>
+            <p>Proud graduates and families</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="gallery/gradchurch.jpg" alt="Church Graduation">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Church Graduation</h4>
+            <p>Faith-based celebration</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activities Images -->
+      <div class="gallery-item" data-category="activities">
+        <img src="gallery/animalopharnage.jpg" alt="Animal Orphanage Visit">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Animal Orphanage</h4>
+            <p>Learning about wildlife conservation</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="gallery/swiming1.jpg" alt="Swimming Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Swimming Lessons</h4>
+            <p>Physical education and fun</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="gallery/ministry1.jpg" alt="Ministry Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Ministry Programs</h4>
+            <p>Spiritual development activities</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Educational Trips -->
+      <div class="gallery-item" data-category="trips">
+        <img src="gallery/trip1.jpg" alt="Educational Trip">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Educational Trip</h4>
+            <p>Learning beyond the classroom</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="gallery/24trip14.jpg" alt="2024 School Trip">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>2024 School Trip</h4>
+            <p>Exploring new horizons</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="gallery/food.jpg" alt="Trip Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Experiences</h4>
+            <p>Creating lasting memories</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- More School Images -->
+      <div class="gallery-item" data-category="school">
+        <img src="gallery/cbc3.jpg" alt="CBC Program">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Implementation</h4>
+            <p>21st century learning skills</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="gallery/g1.jpg" alt="Grade 1 Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 1 Learning</h4>
+            <p>Foundation building education</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="gallery/awardstudent.jpg" alt="Award Ceremony">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Student Awards</h4>
+            <p>Recognizing excellence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav modal-prev">&#10094;</button>
+    <button class="modal-nav modal-next">&#10095;</button>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="">
+    </div>
+  </div>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/254723322449" class="whatsapp-button" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Heriwadi Christian School. All rights reserved.</p>
+      <p>
+        <a href="Terms-of-use.html" target="_blank">Privacy Policy</a> |
+        <a href="Terms-of-use.html" target="_blank">Terms of Use</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+    // Gallery functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const closeModal = document.querySelector('.modal-close');
+      const prevBtn = document.querySelector('.modal-prev');
+      const nextBtn = document.querySelector('.modal-next');
+      
+      let currentImageIndex = 0;
+      let currentImages = [];
+
+      // Filter functionality
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+          
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // Filter images with animation
+          galleryItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+              if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                  item.style.opacity = '1';
+                  item.style.transform = 'translateY(0)';
+                }, 50);
+              } else {
+                item.style.display = 'none';
+              }
+            }, index * 50);
+          });
+          
+          // Update current images array for modal navigation
+          updateCurrentImages(filter);
+        });
+      });
+
+      // Initialize with all images
+      updateCurrentImages('all');
+
+      // Modal functionality
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          modalImage.src = img.src;
+          modal.style.display = 'block';
+          
+          // Find current index in filtered images
+          const imgSrc = img.src;
+          currentImageIndex = currentImages.findIndex(imgItem => 
+            imgItem.src.includes(imgSrc.split('/').pop())
+          );
+          
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close modal
+      closeModal.addEventListener('click', closeModalFunction);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalFunction();
+      });
+
+      // Navigation
+      prevBtn.addEventListener('click', () => navigateImage(-1));
+      nextBtn.addEventListener('click', () => navigateImage(1));
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (modal.style.display === 'block') {
+          if (e.key === 'Escape') closeModalFunction();
+          if (e.key === 'ArrowLeft') navigateImage(-1);
+          if (e.key === 'ArrowRight') navigateImage(1);
+        }
+      });
+
+      function updateCurrentImages(filter) {
+        currentImages = Array.from(galleryItems)
+          .filter(item => filter === 'all' || item.getAttribute('data-category') === filter)
+          .map(item => item.querySelector('img'));
+      }
+
+      function navigateImage(direction) {
+        currentImageIndex += direction;
+        
+        if (currentImageIndex >= currentImages.length) {
+          currentImageIndex = 0;
+        } else if (currentImageIndex < 0) {
+          currentImageIndex = currentImages.length - 1;
+        }
+        
+        modalImage.src = currentImages[currentImageIndex].src;
+      }
+
+      function closeModalFunction() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // Smooth scrolling for navigation
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Add loading animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      });
+
+      galleryItems.forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+</html>

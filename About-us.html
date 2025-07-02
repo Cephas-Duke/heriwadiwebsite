@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Heriwadi Christian School, our mission, vision, history, and core values. Join our community today!">
+    <meta name="keywords" content="Heriwadi Christian School, Ongata Rongai, Christian education, leadership, holistic learning">
+    <title>About Us - Heriwadi Christian School</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #b00a0a;
+            --secondary-color: #007bff;
+            --accent-color: #25d366;
+            --dark-color: #1a1a1a;
+            --light-color: #f8f9fa;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Top Bar Enhanced */
+        .top-bar {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,249,250,0.95));
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(176,10,10,0.1);
+        }
+
+        .top-bar .logo img {
+            height: 70px;
+            transition: transform 0.3s ease;
+        }
+
+        .top-bar .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background: white;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), #8b0000);
+            padding: 15px 0;
+            box-shadow: var(--shadow-soft);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 15px;
+            padding: 10px 20px !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section - Dramatic Enhancement */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(45deg, rgba(176,10,10,0.8), rgba(0,123,255,0.8)), url('images/danc.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(176,10,10,0.3), rgba(0,123,255,0.3));
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(45deg, rgba(176,10,10,0.3), rgba(0,123,255,0.3)); }
+            50% { background: linear-gradient(45deg, rgba(0,123,255,0.3), rgba(176,10,10,0.3)); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 40px;
+        }
+
+        .hero-section h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: heroFadeIn 1.5s ease-out 0.5s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1.5s ease-out 1s forwards;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1.5s ease-out 1.5s forwards;
+        }
+
+        .btn-hero {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255,107,107,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-hero:hover::before {
+            left: 100%;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255,107,107,0.4);
+            color: white;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 30%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Section Enhancements */
+        .section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(176,10,10,0.02) 50%, transparent 100%);
+            z-index: -1;
+        }
+
+        .section h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Enhanced Cards */
+        .enhanced-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(176,10,10,0.1);
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .enhanced-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Mission/Vision Cards */
+        .mission-vision-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,249,250,0.95));
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-vision-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(176,10,10,0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .mission-vision-card:hover::before {
+            opacity: 1;
+            animation: shimmer 2s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Background Sections Enhancement */
+        .section-with-bg {
+            background: linear-gradient(135deg, rgba(176,10,10,0.9), rgba(0,123,255,0.9)), url('images/assembly.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            padding: 120px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-with-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: -1;
+        }
+
+        /* Core Values Enhancement */
+        .value-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--gradient-1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .value-item:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+            color: rgb(5, 5, 5);
+        }
+
+        .value-item:hover::before {
+            opacity: 1;
+        }
+
+        .value-item i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover i {
+            color: rgb(6, 5, 5);
+            transform: scale(1.2) rotateY(360deg);
+        }
+
+        .value-item h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        /* Leadership Section */
+        .leadership-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .leadership-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--gradient-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            color: white;
+        }
+
+        .leadership-card:hover::before {
+            opacity: 1;
+        }
+
+        .leadership-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leadership-card:hover .leadership-img {
+            transform: scale(1.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Gallery Enhancement */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(176,10,10,0.8), rgba(0,123,255,0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* WhatsApp Button Enhancement */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent-color), #128c7e);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 30px;
+            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(37,211,102,0.6);
+            color: white;
+            animation: none;
+        }
+
+        /* CTA Section Enhancement */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), #8b0000);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: backgroundMove 20s linear infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            transform: translateY(0);
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .mission-vision-card,
+            .enhanced-card {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #8b0000, #0056b3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <!-- Enhanced Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-4 text-center text-md-start mb-3 mb-md-0">
+                        <div class="logo">
+                            <img src="Gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div><strong>Phone:</strong> <a href="tel:+254723322449">+254723322449</a></div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div><strong>Email:</strong> <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div><strong>Address:</strong> <a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enhanced Navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">Heriwadi Christian School</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="About-us.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Admissions.html">Admissions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Gallery.html">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contact-us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero-section">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="hero-content">
+            <h1>About Heriwadi Christian School</h1>
+            <p class="hero-subtitle">Nurturing minds, hearts, and spirits for tomorrow's leaders</p>
+            <div class="hero-cta">
+                <a href="#introduction" class="btn-hero">Discover Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Introduction Section -->
+    <section class="section" id="introduction">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="enhanced-card">
+                        <h2>Welcome to Excellence</h2>
+                        <p class="lead">
+                            Heriwadi Christian School stands as a beacon of faith-based education, where every child's potential is recognized, nurtured, and celebrated. Our commitment goes beyond academics—we're shaping the leaders of tomorrow.
+                        </p>
+                        <p>
+                            Since 2018, we've been dedicated to providing holistic education that develops not just the mind, but the character, spirit, and leadership qualities that will serve our students throughout their lives.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="Gallery/back.g.jpg" alt="Students learning at Heriwadi Christian School" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <div>Inspiring Learning Environment</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Mission Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="Gallery/mission.jpg" alt="Mission of Heriwadi Christian School" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <div>Our Mission in Action</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="mission-vision-card">
+                        <h2>Our Mission</h2>
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-crown text-primary me-3" style="font-size: 2rem;"></i>
+                                    <p class="mb-0"><strong>Leadership Development:</strong> Encouraging every learner to discover and develop their unique leadership potential</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-trophy text-primary me-3" style="font-size: 2rem;"></i>
+                                    <p class="mb-0"><strong>Achievement Excellence:</strong> Equipping learners with the tools and mindset to become high achievers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Vision Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="mission-vision-card">
+                        <h2>Our Vision</h2>
+                        <div class="text-center mb-4">
+                            <i class="fas fa-eye text-primary" style="font-size: 4rem;"></i>
+                        </div>
+                        <p class="lead text-center">
+                            "Empowering learners with a holistic approach to education, coupled with exceptional leadership skills that transform communities and nations."
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-md-6 text-center">
+                                <i class="fas fa-brain text-secondary mb-2" style="font-size: 2rem;"></i>
+                                <h5>Holistic Development</h5>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <i class="fas fa-users text-secondary mb-2" style="font-size: 2rem;"></i>
+                                <h5>Leadership Excellence</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="Gallery/vision.jpeg" alt="Vision of Heriwadi Christian School" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <div>Vision Realized</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced History Section -->
+    <section class="section-with-bg">
+        <div class="container">
+            <h2 class="text-center animate-on-scroll">Our Journey of Growth</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="timeline">
+                        <div class="enhanced-card animate-on-scroll" style="background: rgba(11, 8, 8, 0.95); backdrop-filter: blur(10px);">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                                <h4 class="mb-0 text-primary">2018 - The Beginning</h4>
+                            </div>
+                            <p>Heriwadi Christian School opened its doors in September 2018 with just two brave students. What started as a vision became reality, laying the foundation for educational excellence in Ongata Rongai.</p>
+                        </div>
+                        
+                        <div class="enhanced-card animate-on-scroll" style="background: rgba(8, 6, 6, 0.95); backdrop-filter: blur(10px);">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <h4 class="mb-0 text-success">2019 - Growing Roots</h4>
+                            </div>
+                            <p>Our second year saw steady growth as we welcomed new families who believed in our mission. From four to seven learners, each addition strengthened our community and reinforced our commitment to excellence.</p>
+                        </div>
+                        
+                        <div class="enhanced-card animate-on-scroll" style="background: rgba(6, 5, 5, 0.95); backdrop-filter: blur(10px);">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4 class="mb-0 text-warning">2020 - Resilience Through Challenge</h4>
+                            </div>
+                            <p>The global pandemic tested our resolve, but like a phoenix, we emerged stronger. Starting 2020 with nine students, we faced uncertainty with faith and determination, preparing for the breakthrough that was to come.</p>
+                        </div>
+                        
+                        <div class="enhanced-card animate-on-scroll" style="background: rgba(5, 4, 4, 0.95); backdrop-filter: blur(10px);">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4 class="mb-0 text-info">2021 - The Breakthrough</h4>
+                            </div>
+                            <p>January 2021 marked our pivotal moment. With five returning students and five new admissions, we reached double digits for the first time. This milestone wasn't just about numbers—it was about trust, growth, and the beginning of our upward trajectory that continues today.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Core Values Section -->
+    <section class="section-with-bg" style="background: linear-gradient(135deg, rgba(0,123,255,0.9), rgba(176,10,10,0.9)), url('images/assembly.jpg') no-repeat center center/cover;">
+        <div class="container">
+            <h2 class="text-center animate-on-scroll">Our Core Values</h2>
+            <div class="row">
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="value-item">
+                        <i class="fas fa-star"></i>
+                        <h3>Excellence</h3>
+                        <p>We pursue the highest standards in everything we do, from academic achievement to character development. Excellence isn't just a goal—it's our standard.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="value-item">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Servant Leadership</h3>
+                        <p>We cultivate leaders who serve others with humility, integrity, and compassion. True leadership begins with a heart to serve and uplift others.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 animate-on-scroll">
+                    <div class="value-item">
+                        <i class="fas fa-tree"></i>
+                        <h3>Holistic Growth</h3>
+                        <p>We nurture the complete person—intellectually, emotionally, physically, and spiritually. Education at HCS touches every aspect of human development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Leadership Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center animate-on-scroll">Visionary Leadership</h2>
+            <p class="text-center lead animate-on-scroll mb-5">Meet the dedicated leaders who guide our mission and inspire our community</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6 animate-on-scroll">
+                    <div class="leadership-card">
+                        <img src="Gallery/rev ben.jpg" alt="Rev. Ben Thuku - Director" class="leadership-img img-fluid">
+                        <h3>Rev. Ben Thuku</h3>
+                        <p class="text-primary fw-bold">Director & Visionary</p>
+                        <p>A passionate educator and spiritual leader, Rev. Ben brings years of experience in Christian education and community development. His vision for holistic learning continues to shape our school's direction.</p>
+                        <div class="social-links mt-3">
+                            <i class="fas fa-quote-left text-muted"></i>
+                            <em>"Every child has the potential to be a leader. Our job is to help them discover it."</em>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 animate-on-scroll">
+                    <div class="leadership-card">
+                        <img src="Gallery/pst jean.jpg" alt="Pst. Jean Thuku - Co-Director" class="leadership-img img-fluid">
+                        <h3>Pst. Jean Thuku</h3>
+                        <p class="text-primary fw-bold">Co-Director & Educational Excellence Advocate</p>
+                        <p>Pastor Jean's commitment to educational excellence and character development ensures that every student receives personalized attention and care. Her nurturing approach creates a family atmosphere at HCS.</p>
+                        <div class="social-links mt-3">
+                            <i class="fas fa-quote-left text-muted"></i>
+                            <em>"Education is not just about knowledge—it's about transformation."</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Gallery Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center animate-on-scroll">Life at Heriwadi</h2>
+            <p class="text-center lead animate-on-scroll mb-5">Experience the vibrant community and inspiring environment that makes HCS special</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="Gallery/tr. alice.JPG" alt="Teacher Alice - Dedicated Educator">
+                        <div class="gallery-overlay">
+                            <div>
+                                <i class="fas fa-chalkboard-teacher mb-2" style="font-size: 2rem;"></i>
+                                <div>Dedicated Teaching Excellence</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="Gallery/van.jpg" alt="School Transportation">
+                        <div class="gallery-overlay">
+                            <div>
+                                <i class="fas fa-bus mb-2" style="font-size: 2rem;"></i>
+                                <div>Safe & Reliable Transport</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="gallery-item">
+                        <img src="Gallery/pg.JPG" alt="School Playground">
+                        <div class="gallery-overlay">
+                            <div>
+                                <i class="fas fa-running mb-2" style="font-size: 2rem;"></i>
+                                <div>Active Learning Environment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Call-to-Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2>Join the Heriwadi Family</h2>
+                <p class="lead">Be part of a community that believes in your child's unlimited potential. Together, we'll nurture the leaders of tomorrow.</p>
+                <div class="mt-4">
+                    <a href="Admissions.html" class="btn-hero me-3">Start Your Journey</a>
+                    <a href="Contact-us.html" class="btn btn-outline-light btn-lg">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/254723322449" class="whatsapp-button" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>Heriwadi Christian School</h5>
+                    <p>Nurturing minds, hearts, and spirits for tomorrow's leaders since 2018.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <div class="social-links mb-3">
+                        <a href="#" class="text-white me-3" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3" style="font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p>&copy; 2025 Heriwadi Christian School. All rights reserved.</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">
+                        <a href="Terms-of-use.html" class="text-white-50 me-3">Privacy Policy</a>
+                        <a href="Terms-of-use.html" class="text-white-50">Terms of Use</a>
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-white-50">Made with ❤️ for educational excellence</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Page Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Smooth Scrolling for Internal Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'linear-gradient(135deg, rgba(176,10,10,0.95), rgba(139,0,0,0.95))';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, var(--primary-color), #8b0000)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.enhanced-card, .value-item, .leadership-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Typing effect for hero subtitle
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        if (heroSubtitle) {
+            const text = heroSubtitle.textContent;
+            heroSubtitle.textContent = '';
+            let i = 0;
+            
+            setTimeout(() => {
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        heroSubtitle.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    }
+                };
+                typeWriter();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

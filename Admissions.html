@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions - Heriwadi Christian Schools</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #c00;
+      --primary-dark: #a00;
+      --primary-light: #ff4444;
+      --secondary-color: #007bff;
+      --accent-color: #25d366;
+      --text-dark: #2c3e50;
+      --text-light: #6c757d;
+      --bg-light: #f8f9fa;
+      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
+      --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --glass-bg: rgba(255, 255, 255, 0.25);
+      --glass-border: rgba(255, 255, 255, 0.18);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Enhanced animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(204, 0, 0, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(204, 0, 0, 0);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+      }
+      50% {
+        box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+      }
+    }
+
+    /* Top Bar Enhanced */
+    .top-bar {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 15px 0;
+      box-shadow: var(--shadow-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .top-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .top-bar .logo img {
+      height: 70px;
+      transition: var(--transition);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+
+    .top-bar .logo img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      padding: 8px 16px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      transition: var(--transition);
+    }
+
+    .contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .contact-item i {
+      color: var(--primary-color);
+      font-size: 18px;
+      animation: bounce 2s infinite;
+    }
+
+    /* Enhanced Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      padding: 15px 0;
+      box-shadow: var(--shadow-medium);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-size: 28px;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0 10px;
+      padding: 8px 16px !important;
+      border-radius: 20px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .navbar-nav .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition);
+    }
+
+    .navbar-nav .nav-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .navbar-nav .nav-link:hover::before {
+      left: 100%;
+    }
+
+    /* Hero Section Enhanced */
+    .hero-section {
+      background: 
+        linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(204,0,0,0.3) 100%),
+        url('images/parade.jpg') no-repeat center center/cover;
+      color: #fff;
+      padding: 200px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      animation: heroShine 4s ease-in-out infinite;
+    }
+
+    @keyframes heroShine {
+      0%, 100% { transform: translateX(-100%) skewX(-25deg); }
+      50% { transform: translateX(100%) skewX(-25deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-section h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 30px;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      background: linear-gradient(45deg, #fff, #f0f0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .hero-section p {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      animation: fadeInUp 1.5s ease-out 0.3s both;
+    }
+
+    .hero-section .btn {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1.5s ease-out 0.6s both, pulse 2s infinite 2s;
+    }
+
+    .hero-section .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: var(--transition);
+    }
+
+    .hero-section .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: none;
+    }
+
+    .hero-section .btn:hover::before {
+      left: 100%;
+    }
+
+    /* Section Enhancements */
+    .section-enhanced {
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-enhanced::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(204,0,0,0.03) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .section-enhanced h2 {
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: 2.8rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-enhanced h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      border-radius: 2px;
+    }
+
+    /* Process Steps Enhanced */
+    .admission-process .step {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 40px 20px;
+      background: rgba(255,255,255,0.9);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .admission-process .step:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .admission-process .step:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .admission-process .step::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(204,0,0,0.1), transparent);
+      transition: var(--transition);
+    }
+
+    .admission-process .step:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-heavy);
+    }
+
+    .admission-process .step:hover::before {
+      top: 0;
+    }
+
+    .admission-process .step i {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .admission-process .step:hover i {
+      animation: bounce 1s ease-in-out;
+      color: var(--primary-light);
+    }
+
+    /* Form Enhanced */
+    .admission-form {
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    }
+
+    .admission-form .form-group {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .admission-form label {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .admission-form input,
+    .admission-form textarea,
+    .admission-form select {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #e9ecef;
+      border-radius: var(--border-radius);
+      font-size: 16px;
+      transition: var(--transition);
+      background: rgba(255,255,255,0.9);
+    }
+
+    .admission-form input:focus,
+    .admission-form textarea:focus,
+    .admission-form select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(204,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .admission-form button {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .admission-form button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: var(--transition);
+    }
+
+    .admission-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .admission-form button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Download Section Enhanced */
+    .download-section {
+      text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='m0 40l40-40h-40v40zm40 0v-40h-40l40 40z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .download-section h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .download-button {
+      background: linear-gradient(135deg, #ff6f61 0%, #ff8a80 100%);
+      color: #fff;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
+    }
+
+    .download-button:hover {
+      animation: none;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    /* WhatsApp Button Enhanced */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--accent-color) 0%, #128c7e 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 28px;
+      box-shadow: var(--shadow-heavy);
+      animation: pulse 2s infinite;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .whatsapp-button:hover {
+      animation: none;
+      transform: scale(1.1);
+      box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Footer Enhanced */
+    footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    }
+
+    footer a {
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    footer a:hover {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-section p {
+        font-size: 1.1rem;
+      }
+      
+      .section-enhanced h2 {
+        font-size: 2.2rem;
+      }
+      
+      .section-enhanced {
+        padding: 60px 0;
+      }
+      
+      .requirements-container {
+        padding: 20px;
+      }
+    }
+
+    /* Scroll Reveal Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .fade-in-delay-1 { animation-delay: 0.2s; }
+    .fade-in-delay-2 { animation-delay: 0.4s; }
+    .fade-in-delay-3 { animation-delay: 0.6s; }
+
+    /* Loading Animation */
+    .loading {
+      opacity: 0;
+      animation-play-state: paused;
+    }
+
+    /* Additional CSS for enhanced interactions */
+    .form-group.focused label {
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    .notification {
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    body.loaded .loading {
+      animation-play-state: running;
+    }
+
+    /* Enhanced select styling */
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 20px;
+      padding-right: 40px;
+    }
+
+    /* Enhanced responsive design */
+    @media (max-width: 576px) {
+      .contact-info {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .contact-item {
+        justify-content: center;
+      }
+      
+      .hero-section {
+        padding: 120px 0;
+      }
+      
+      .section-enhanced {
+        padding: 50px 0;
+      }
+      
+      .whatsapp-button {
+        bottom: 20px;
+        right: 20px;
+        padding: 15px;
+        font-size: 24px;
+      }
+    }
+
+    /* Notification styles */
+    .notification.success {
+      background: #10b981;
+    }
+
+    .notification.error {
+      background: #ef4444;
+    }
+
+    /* Process timeline */
+    .process-timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    .process-timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+
+    .timeline-step {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-step::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -12px;
+      background: var(--primary-color);
+      border: 4px solid white;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    .left::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      right: 30px;
+      border: medium solid white;
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent white;
+    }
+
+    .right::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: 30px;
+      border: medium solid white;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+
+    .right::after {
+      left: -12px;
+    }
+
+    .timeline-content {
+      padding: 20px 30px;
+      background: white;
+      position: relative;
+      border-radius: 6px;
+      box-shadow: var(--shadow-light);
+    }
+
+    @media screen and (max-width: 768px) {
+      .process-timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-step {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-step::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+      }
+      
+      .left::after, .right::after {
+        left: 18px;
+      }
+      
+      .right {
+        left: 0%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Logo -->
+          <div class="col-12 col-md-4 text-center text-md-left">
+            <div class="logo">
+              <img src="Gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" class="img-fluid">
+            </div>
+          </div>
+          <!-- Contact Info -->
+          <div class="col-12 col-md-8">
+            <div class="contact-info text-center text-md-right">
+              <div class="contact-item">
+                <div><i class="fas fa-phone"></i></div>
+                <div><span>Phone:</span> <a href="tel:+254723322449">+254723322449</a></div>
+              </div>
+              <div class="contact-item">
+                <div><i class="fas fa-envelope"></i></div>
+                <div><span>Email:</span> <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
+              </div>
+              <div class="contact-item">
+                <div><i class="fas fa-map-marker-alt"></i></div>
+                <div><span>Address:</span> <a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Heriwadi Christian School</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About-us.html">About Us</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="Admissions.html">Admissions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Contact-us.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Admissions</h1>
+        <p>Join Heriwadi Christian Schools for a transformative educational experience.</p>
+        <a href="#admission-form" class="btn">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Requirements -->
+  <section class="admission-requirements section-enhanced">
+    <div class="container">
+      <h2 class="loading">Admission Requirements</h2>
+      <div class="requirements-container loading">
+        <h3 class="text-center mb-4">Documents Needed for Admission</h3>
+        <p style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">
+          <i class="fas fa-file-alt mr-2"></i> <strong>Completed application form</strong> - Available for download below or from our office
+        </p>
+        <p style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">
+          <i class="fas fa-id-card mr-2"></i> <strong>Birth certificate</strong> - Original and one photocopy
+        </p>
+        <p style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">
+          <i class="fas fa-file-signature mr-2"></i> <strong>Previous school reports</strong> - For students transferring from other schools
+        </p>
+        <p style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">
+          <i class="fas fa-camera mr-2"></i> <strong>Passport photos</strong> - Two recent color passport-sized photographs
+        </p>
+        <p style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">
+          <i class="fas fa-money-bill-wave mr-2"></i> <strong>Admission fee</strong> - KSh 500 non-refundable application fee
+        </p>
+        <p style="color: #2c3e50; font-size: 1.2rem; margin-bottom: 15px;">
+          <i class="fas fa-file-medical mr-2"></i> <strong>Medical records</strong> - Immunization records and any relevant medical information
+        </p>
+        <div class="alert alert-info mt-4">
+          <i class="fas fa-info-circle"></i> <strong>Note:</strong> All documents should be submitted to the admissions office in person or via email to heriwadics@gmail.com
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Process Timeline -->
+  <section class="section-enhanced" style="background-color: #f8f9fa;">
+    <div class="container">
+      <h2 class="loading">Admission Process</h2>
+      <div class="process-timeline">
+        <div class="timeline-step left loading">
+          <div class="timeline-content">
+            <h3>1. Application Submission</h3>
+            <p>Submit the completed application form along with all required documents</p>
+            <p class="text-muted"><i class="far fa-clock"></i> Ongoing</p>
+          </div>
+        </div>
+        <div class="timeline-step right loading fade-in-delay-1">
+          <div class="timeline-content">
+            <h3>2. Review & Assessment</h3>
+            <p>Our admissions team will review your application and may schedule an assessment</p>
+            <p class="text-muted"><i class="far fa-clock"></i> Within 2 weeks of submission</p>
+          </div>
+        </div>
+        <div class="timeline-step left loading fade-in-delay-2">
+          <div class="timeline-content">
+            <h3>3. Admission Decision</h3>
+            <p>You will receive notification of the admission decision via email/phone</p>
+            <p class="text-muted"><i class="far fa-clock"></i> Within 1 week after assessment</p>
+          </div>
+        </div>
+        <div class="timeline-step right loading fade-in-delay-3">
+          <div class="timeline-content">
+            <h3>4. Fee Payment & Registration</h3>
+            <p>Complete the registration process by paying the required fees</p>
+            <p class="text-muted"><i class="far fa-clock"></i> Within 2 weeks of acceptance</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-choose-us section-enhanced">
+    <div class="container">
+      <h2 class="loading">Why Choose Heriwadi Christian Schools?</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card loading" style="color: #2c3e50; font-size: 1.2rem; padding: 20px;">
+            <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #c00; margin-bottom: 20px;"></i>
+            <h3>Quality Education</h3>
+            <p style="color: #2c3e50; font-size: 1rem;">We provide a holistic and world-class education that prepares students for success in academics and life.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card loading" style="color: #2c3e50; font-size: 1.2rem; padding: 20px;">
+            <i class="fas fa-users" style="font-size: 3rem; color: #c00; margin-bottom: 20px;"></i>
+            <h3>Experienced Staff</h3>
+            <p style="color: #2c3e50; font-size: 1rem;">Our teachers are highly qualified and experienced professionals dedicated to student excellence.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card loading" style="color: #2c3e50; font-size: 1.2rem; padding: 20px;">
+            <i class="fas fa-heart" style="font-size: 3rem; color: #c00; margin-bottom: 20px;"></i>
+            <h3>Nurturing Environment</h3>
+            <p style="color: #2c3e50; font-size: 1rem;">We foster a supportive and inclusive Christian community where every student thrives.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Form -->
+  <section id="admission-form" class="admission-form section-enhanced">
+    <div class="container">
+      <h2 class="loading">Admission Form</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <form id="applicationForm" onsubmit="submitViaWhatsApp(event)" class="loading">
+            <div class="form-group">
+              <label for="fullName">
+                <i class="fas fa-user"></i> Full Name
+              </label>
+              <input type="text" id="fullName" name="fullName" placeholder="Enter student's full name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">
+                <i class="fas fa-envelope"></i> Email Address
+              </label>
+              <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">
+                <i class="fas fa-phone"></i> Phone Number
+              </label>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="grade">
+                <i class="fas fa-school"></i> Grade Applying For
+              </label>
+              <select id="grade" name="grade" required>
+                <option value="">Select Grade</option>
+                <option value="Play group">Play group</option>
+                <option value="Pre-Primary 1">PP 1</option>
+                <option value="Pre-Primary 2">PP 2</option>
+                <option value="Grade 1">Grade 1</option>
+                <option value="Grade 2">Grade 2</option>
+                <option value="Grade 3">Grade 3</option>
+                <option value="Grade 4">Grade 4</option>
+                <option value="Grade 5">Grade 5</option>
+                <option value="Grade 6">Grade 6</option>
+                <option value="Grade 7">Grade 7</option>
+                <option value="Grade 8">Grade 8</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">
+                <i class="fas fa-comment"></i> Additional Information
+              </label>
+              <textarea id="message" name="message" rows="5" placeholder="Any additional information you'd like to share..."></textarea>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="termsCheck" required>
+              <label class="form-check-label" for="termsCheck">I agree to the <a href="Terms-of-use.html" target="_blank">terms and conditions</a> and privacy policy</label>
+            </div>
+            <div class="text-center">
+              <button type="submit">
+                <i class="fas fa-paper-plane"></i> Submit Application
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download-section">
+    <div class="container">
+      <h2 class="loading">Download The Admission Form</h2>
+      <p class="loading fade-in-delay-1">Download the admission form and submit it to our admissions team.</p>
+      <a href="files/Admission form.pdf.pdf" download class="loading fade-in-delay-2">
+        <button class="download-button">
+          <i class="fas fa-download"></i> Download Admission Form
+        </button>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-enhanced">
+    <div class="container">
+      <h2 class="loading">Frequently Asked Questions</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="card loading">
+          <div class="card-header" id="headingOne">
+            <h3 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                What is the admission deadline?
+              </button>
+            </h3>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+            <div class="card-body">
+              We accept applications throughout the year, but we recommend applying at least 2 months before the start of the term for priority consideration.
+            </div>
+          </div>
+        </div>
+        <div class="card loading fade-in-delay-1">
+          <div class="card-header" id="headingTwo">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                What are the school hours?
+              </button>
+            </h3>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+            <div class="card-body">
+              School hours are from 8:00 AM to 3:30 PM Monday through Friday. We also offer after-school programs and extracurricular activities until 5:00 PM.
+            </div>
+          </div>
+        </div>
+        <div class="card loading fade-in-delay-2">
+          <div class="card-header" id="headingThree">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                How do I know that my child has been accepted?
+              </button>
+            </h3>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+            <div class="card-body">
+              You will typically receive an admission decision within 1 week after the assessment. If accepted, you will be required to complete the registration process and pay the necessary fees.
+            </div>
+          </div>
+        </div>
+        <div class="card loading fade-in-delay-2">
+          <div class="card-header" id="headingThree">
+            <h3 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Does your school offer transport services?
+              </button>
+            </h3>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+            <div class="card-body">
+              Yes, we offer transport services for students within designated routes at affordable rates. Please contact our admissions office for more details on routes and fees.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section section-enhanced">
+    <div class="container text-center">
+      <h2 class="loading">Contact Us for More Information</h2>
+      <p class="loading fade-in-delay-1 lead">Have questions? Reach out to our admissions team.</p>
+      <a href="Contact-us.html" class="btn loading fade-in-delay-2">
+        <i class="fas fa-phone-alt"></i> Contact Us
+      </a>
+    </div>
+  </section>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/254723322449" class="whatsapp-button" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 loading">
+          <h4>Quick Links</h4>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About-us.html">About Us</a></li>
+            <li><a href="Admissions.html">Admissions</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="Contact-us.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 loading fade-in-delay-1">
+          <h4>Contact Information</h4>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt"></i> Ongata Rongai, Along Maasai Lodge-Rimpa Road</li>
+            <li><i class="fas fa-phone"></i> +254 723 322 449</li>
+            <li><i class="fas fa-envelope"></i> heriwadics@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-4 loading fade-in-delay-2">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+          </div>
+          <div class="mt-3">
+            <a href="Terms-of-use.html" class="text-white mr-2">Privacy Policy</a>
+            <a href="Terms-of-use.html" class="text-white">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <p class="text-center">© 2025 Heriwadi Christian School. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Enhanced Form Submission
+    function submitViaWhatsApp(event) {
+      event.preventDefault();
+
+      // Validate terms checkbox
+      if (!document.getElementById('termsCheck').checked) {
+        showNotification('Please agree to the terms and conditions', 'error');
+        return;
+      }
+
+      // Get form data
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const grade = document.getElementById('grade').value;
+      const message = document.getElementById('message').value;
+
+      // Validate form fields
+      if (!fullName || !email || !phone || !grade) {
+        showNotification('Please fill out all required fields.', 'error');
+        return;
+      }
+
+      // Format the message for WhatsApp
+      const whatsappMessage = `🎓 *New Admission Application*%0A%0A` +
+                              `👤 *Full Name:* ${fullName}%0A` +
+                              `📧 *Email:* ${email}%0A` +
+                              `📱 *Phone:* ${phone}%0A` +
+                              `🏫 *Grade Applying For:* ${grade}%0A` +
+                              `💬 *Additional Information:* ${message || 'None'}%0A%0A` +
+                              `Thank you for your interest in Heriwadi Christian Schools! 🙏`;
+
+      // Show loading animation
+      const submitBtn = event.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      submitBtn.disabled = true;
+
+      // Simulate processing time
+      setTimeout(() => {
+        // Open WhatsApp with the pre-filled message
+        window.open(`https://wa.me/254723322449?text=${whatsappMessage}`, '_blank');
+
+        // Show success message
+        showNotification('Application submitted successfully! We will contact you shortly.', 'success');
+        
+        // Reset form
+        document.getElementById('applicationForm').reset();
+        
+        // Reset button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }, 1500);
+    }
+
+    // Notification System
+    function showNotification(message, type) {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+        <span>${message}</span>
+      `;
+      
+      // Add notification styles
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Animate in
+      setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+      
+      // Auto remove
+      setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 4000);
+    }
+
+    // Scroll Animation Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all loading elements
+    document.querySelectorAll('.loading').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Enhanced Form Interactions
+    document.querySelectorAll('input, textarea, select').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        this.parentElement.classList.remove('focused');
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add loading animations on page load
+    window.addEventListener('load', function() {
+      document.body.classList.add('loaded');
+    });
+
+    // Enhanced button hover effects
+    document.querySelectorAll('.btn, .download-button').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+      });
+      
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+
+    // Initialize Bootstrap tooltips
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+</body>
+</html>
