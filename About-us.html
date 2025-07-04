@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about Heriwadi Christian School, our mission, vision, history, and core values. Join our community today!">
     <meta name="keywords" content="Heriwadi Christian School, Ongata Rongai, Christian education, leadership, holistic learning">
-    <title>About Us - Heriwadi Christian School</title>
+    <title>About Us - Heriwadi Christian Schools</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #b00a0a;
-            --secondary-color: #007bff;
-            --accent-color: #25d366;
-            --dark-color: #1a1a1a;
-            --light-color: #f8f9fa;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --shadow-soft: 0 10px 40px rgba(0,0,0,0.1);
-            --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
+            --primary-red: #b00a0a;
+            --dark-red: #8b0000;
+            --light-red: #dc3545;
+            --gold: #ffd700;
+            --dark-blue: #1a1a2e;
+            --light-gray: #f8f9fa;
+            --text-dark: #2c3e50;
+            --white: #ffffff;
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -33,13 +33,16 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--light-gray) 0%, #c3cfe2 100%);
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         /* Smooth scrolling */
@@ -47,14 +50,14 @@
             scroll-behavior: smooth;
         }
 
-        /* Loading Animation */
+        /* Page Loader */
         .page-loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, var(--primary-red), var(--dark-blue));
             display: flex;
             justify-content: center;
             align-items: center;
@@ -68,7 +71,7 @@
             height: 60px;
             border: 4px solid rgba(255,255,255,0.3);
             border-radius: 50%;
-            border-top-color: white;
+            border-top-color: var(--white);
             animation: spin 1s ease-in-out infinite;
         }
 
@@ -76,106 +79,111 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Top Bar Enhanced */
+        /* Top Bar Styles */
         .top-bar {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,249,250,0.95));
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
+            color: var(--white);
             padding: 15px 0;
-            border-bottom: 1px solid rgba(176,10,10,0.1);
-        }
-
-        .top-bar .logo img {
-            height: 70px;
-            transition: transform 0.3s ease;
-        }
-
-        .top-bar .logo img:hover {
-            transform: scale(1.05);
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 16px;
-            padding: 10px 15px;
-            background: rgba(255,255,255,0.8);
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-            background: white;
-        }
-
-        .contact-item i {
-            color: var(--primary-color);
-            font-size: 20px;
-            width: 24px;
-            text-align: center;
-        }
-
-        /* Enhanced Navbar */
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-color), #8b0000);
-            padding: 15px 0;
-            box-shadow: var(--shadow-soft);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .navbar-brand {
-            color: #fff !important;
-            font-size: 28px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .navbar-nav .nav-link {
-            color: #fff !important;
-            font-size: 18px;
-            font-weight: 500;
-            margin: 0 15px;
-            padding: 10px 20px !important;
-            border-radius: 25px;
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .navbar-nav .nav-link::before {
+        .top-bar::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
         }
 
-        .navbar-nav .nav-link:hover::before {
-            left: 100%;
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
-        .navbar-nav .nav-link:hover {
+        .logo img {
+            max-width: 80px;
+            height: auto;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .logo img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-end;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
             background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
         }
 
-        /* Hero Section - Dramatic Enhancement */
+        .contact-item i {
+            color: var(--gold);
+            font-size: 1.2em;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red)) !important;
+            box-shadow: var(--shadow-xl);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white) !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            padding: 10px 20px !important;
+            margin: 0 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Hero Section */
         .hero-section {
             position: relative;
             height: 100vh;
@@ -183,7 +191,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--white);
             text-align: center;
             overflow: hidden;
         }
@@ -237,8 +245,8 @@
         }
 
         .btn-hero {
-            background: linear-gradient(135deg, #ff6b6b, #ffa500);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: var(--white);
             padding: 15px 40px;
             font-size: 1.2rem;
             font-weight: 600;
@@ -247,7 +255,7 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255,107,107,0.3);
+            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
         }
@@ -269,8 +277,8 @@
 
         .btn-hero:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255,107,107,0.4);
-            color: white;
+            box-shadow: var(--shadow-xl);
+            color: var(--white);
         }
 
         @keyframes heroFadeIn {
@@ -347,7 +355,7 @@
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 50px;
-            color: var(--dark-color);
+            color: var(--text-dark);
             position: relative;
         }
 
@@ -359,13 +367,13 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             border-radius: 2px;
         }
 
         /* Enhanced Cards */
         .enhanced-card {
-            background: white;
+            background: var(--white);
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
@@ -383,7 +391,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -438,7 +446,7 @@
             background: linear-gradient(135deg, rgba(176,10,10,0.9), rgba(0,123,255,0.9)), url('images/assembly.jpg') no-repeat center center/cover;
             background-attachment: fixed;
             padding: 120px 0;
-            color: white;
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
@@ -474,7 +482,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, var(--gradient-1));
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
@@ -483,7 +491,7 @@
         .value-item:hover {
             transform: translateY(-15px) scale(1.05);
             box-shadow: var(--shadow-hover);
-            color: rgb(5, 5, 5);
+            color: var(--white);
         }
 
         .value-item:hover::before {
@@ -492,13 +500,13 @@
 
         .value-item i {
             font-size: 4rem;
-            color: var(--primary-color);
+            color: var(--primary-red);
             margin-bottom: 25px;
             transition: all 0.3s ease;
         }
 
         .value-item:hover i {
-            color: rgb(6, 5, 5);
+            color: var(--white);
             transform: scale(1.2) rotateY(360deg);
         }
 
@@ -511,7 +519,7 @@
 
         /* Leadership Section */
         .leadership-card {
-            background: white;
+            background: var(--white);
             border-radius: 25px;
             padding: 40px;
             text-align: center;
@@ -529,7 +537,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, var(--gradient-2));
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
@@ -538,7 +546,7 @@
         .leadership-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
-            color: white;
+            color: var(--white);
         }
 
         .leadership-card:hover::before {
@@ -599,7 +607,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--white);
             font-size: 1.2rem;
             font-weight: 600;
         }
@@ -608,13 +616,13 @@
             opacity: 1;
         }
 
-        /* WhatsApp Button Enhancement */
+        /* WhatsApp Button */
         .whatsapp-button {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, var(--accent-color), #128c7e);
-            color: white;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: var(--white);
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -622,24 +630,40 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 30px;
-            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
-            transition: all 0.3s ease;
+            font-size: 28px;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
             animation: pulse 2s infinite;
         }
 
         .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 35px rgba(37,211,102,0.6);
-            color: white;
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
             animation: none;
+            color: var(--white);
+            text-decoration: none;
         }
 
-        /* CTA Section Enhancement */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-color), #8b0000);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: var(--white);
             padding: 100px 0;
             text-align: center;
             position: relative;
@@ -693,8 +717,46 @@
             transition: transform 0.1s ease-out;
         }
 
-        /* Responsive Enhancements */
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
+            color: var(--white);
+            padding: 50px 0 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .footer a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
+            .contact-info {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+
             .hero-section h1 {
                 font-size: 3rem;
             }
@@ -707,11 +769,6 @@
                 font-size: 2.5rem;
             }
 
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
-            }
-
             .section {
                 padding: 60px 0;
             }
@@ -719,6 +776,14 @@
             .mission-vision-card,
             .enhanced-card {
                 padding: 30px 20px;
+            }
+
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
             }
         }
 
@@ -732,12 +797,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #8b0000, #0056b3);
+            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
         }
     </style>
 </head>
@@ -748,7 +813,7 @@
     </div>
 
     <header>
-        <!-- Enhanced Top Bar -->
+        <!-- Top Bar -->
         <div class="top-bar">
             <div class="container">
                 <div class="row align-items-center">
@@ -761,15 +826,15 @@
                         <div class="contact-info">
                             <div class="contact-item">
                                 <i class="fas fa-phone"></i>
-                                <div><strong>Phone:</strong> <a href="tel:+254723322449">+254723322449</a></div>
+                                <div><a href="tel:+254723322449">+254723322449</a></div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
-                                <div><strong>Email:</strong> <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
+                                <div><a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <div><strong>Address:</strong> <a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
+                                <div><a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
                             </div>
                         </div>
                     </div>
@@ -777,29 +842,42 @@
             </div>
         </div>
         
-        <!-- Enhanced Navbar -->
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">Heriwadi Christian School</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-graduation-cap me-2"></i>
+                    Heriwadi Christian Schools Ltd
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home me-1"></i>Home
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="About-us.html">About Us</a>
+                            <a class="nav-link active" href="About-us.html">
+                                <i class="fas fa-info-circle me-1"></i>About Us
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Admissions.html">Admissions</a>
+                            <a class="nav-link" href="Admissions.html">
+                                <i class="fas fa-user-graduate me-1"></i>Admissions
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Gallery.html">Gallery</a>
+                            <a class="nav-link" href="Gallery.html">
+                                <i class="fas fa-images me-1"></i>Gallery
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Contact-us.html">Contact Us</a>
+                            <a class="nav-link" href="Contact-us.html">
+                                <i class="fas fa-phone me-1"></i>Contact Us
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -807,7 +885,7 @@
         </nav>
     </header>
 
-    <!-- Enhanced Hero Section -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="floating-elements">
             <div class="floating-element"></div>
@@ -815,15 +893,15 @@
             <div class="floating-element"></div>
         </div>
         <div class="hero-content">
-            <h1>About Heriwadi Christian School</h1>
-            <p class="hero-subtitle">Nurturing minds, hearts, and spirits for tomorrow's leaders</p>
+            <h1 class="fade-in">About Heriwadi Christian Schools</h1>
+            <p class="hero-subtitle fade-in-delay">Nurturing minds, hearts, and spirits for tomorrow's leaders</p>
             <div class="hero-cta">
                 <a href="#introduction" class="btn-hero">Discover Our Story</a>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Introduction Section -->
+    <!-- Introduction Section -->
     <section class="section" id="introduction">
         <div class="container">
             <div class="row align-items-center">
@@ -831,7 +909,7 @@
                     <div class="enhanced-card">
                         <h2>Welcome to Excellence</h2>
                         <p class="lead">
-                            Heriwadi Christian School stands as a beacon of faith-based education, where every child's potential is recognized, nurtured, and celebrated. Our commitment goes beyond academics—we're shaping the leaders of tomorrow.
+                            Heriwadi Christian Schools stands as a beacon of faith-based education, where every child's potential is recognized, nurtured, and celebrated. Our commitment goes beyond academics—we're shaping the leaders of tomorrow.
                         </p>
                         <p>
                             Since 2018, we've been dedicated to providing holistic education that develops not just the mind, but the character, spirit, and leadership qualities that will serve our students throughout their lives.
@@ -840,7 +918,7 @@
                 </div>
                 <div class="col-lg-6 animate-on-scroll">
                     <div class="gallery-item">
-                        <img src="Gallery/back.g.jpg" alt="Students learning at Heriwadi Christian School" class="img-fluid">
+                        <img src="Gallery/back.g.jpg" alt="Students learning at Heriwadi Christian Schools" class="img-fluid">
                         <div class="gallery-overlay">
                             <div>Inspiring Learning Environment</div>
                         </div>
@@ -850,13 +928,13 @@
         </div>
     </section>
 
-    <!-- Enhanced Mission Section -->
+    <!-- Mission Section -->
     <section class="section bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 animate-on-scroll">
                     <div class="gallery-item">
-                        <img src="Gallery/mission.jpg" alt="Mission of Heriwadi Christian School" class="img-fluid">
+                        <img src="Gallery/mission.jpg" alt="Mission of Heriwadi Christian Schools" class="img-fluid">
                         <div class="gallery-overlay">
                             <div>Our Mission in Action</div>
                         </div>
@@ -868,13 +946,13 @@
                         <div class="row">
                             <div class="col-12 mb-4">
                                 <div class="d-flex align-items-center">
-                                    <i class="fas fa-crown text-primary me-3" style="font-size: 2rem;"></i>
+                                    <i class="fas fa-crown me-3" style="font-size: 2rem; color: var(--primary-red);"></i>
                                     <p class="mb-0"><strong>Leadership Development:</strong> Encouraging every learner to discover and develop their unique leadership potential</p>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="d-flex align-items-center">
-                                    <i class="fas fa-trophy text-primary me-3" style="font-size: 2rem;"></i>
+                                    <i class="fas fa-trophy me-3" style="font-size: 2rem; color: var(--primary-red);"></i>
                                     <p class="mb-0"><strong>Achievement Excellence:</strong> Equipping learners with the tools and mindset to become high achievers</p>
                                 </div>
                             </div>
@@ -885,7 +963,7 @@
         </div>
     </section>
 
-    <!-- Enhanced Vision Section -->
+    <!-- Vision Section -->
     <section class="section">
         <div class="container">
             <div class="row align-items-center">
@@ -893,18 +971,18 @@
                     <div class="mission-vision-card">
                         <h2>Our Vision</h2>
                         <div class="text-center mb-4">
-                            <i class="fas fa-eye text-primary" style="font-size: 4rem;"></i>
+                            <i class="fas fa-eye" style="font-size: 4rem; color: var(--primary-red);"></i>
                         </div>
                         <p class="lead text-center">
                             "Empowering learners with a holistic approach to education, coupled with exceptional leadership skills that transform communities and nations."
                         </p>
                         <div class="row mt-4">
                             <div class="col-md-6 text-center">
-                                <i class="fas fa-brain text-secondary mb-2" style="font-size: 2rem;"></i>
+                                <i class="fas fa-brain mb-2" style="font-size: 2rem; color: var(--dark-red);"></i>
                                 <h5>Holistic Development</h5>
                             </div>
                             <div class="col-md-6 text-center">
-                                <i class="fas fa-users text-secondary mb-2" style="font-size: 2rem;"></i>
+                                <i class="fas fa-users mb-2" style="font-size: 2rem; color: var(--dark-red);"></i>
                                 <h5>Leadership Excellence</h5>
                             </div>
                         </div>
@@ -912,7 +990,7 @@
                 </div>
                 <div class="col-lg-6 animate-on-scroll">
                     <div class="gallery-item">
-                        <img src="Gallery/vision.jpeg" alt="Vision of Heriwadi Christian School" class="img-fluid">
+                        <img src="Gallery/vision.jpeg" alt="Vision of Heriwadi Christian Schools" class="img-fluid">
                         <div class="gallery-overlay">
                             <div>Vision Realized</div>
                         </div>
@@ -922,7 +1000,7 @@
         </div>
     </section>
 
-    <!-- Enhanced History Section -->
+    <!-- History Section -->
     <section class="section-with-bg">
         <div class="container">
             <h2 class="text-center animate-on-scroll">Our Journey of Growth</h2>
@@ -936,7 +1014,7 @@
                                 </div>
                                 <h4 class="mb-0 text-primary">2018 - The Beginning</h4>
                             </div>
-                            <p>Heriwadi Christian School opened its doors in September 2018 with just two brave students. What started as a vision became reality, laying the foundation for educational excellence in Ongata Rongai.</p>
+                            <p>Heriwadi Christian Schools opened its doors in September 2018 with just two brave students. What started as a vision became reality, laying the foundation for educational excellence in Ongata Rongai.</p>
                         </div>
                         
                         <div class="enhanced-card animate-on-scroll" style="background: rgba(8, 6, 6, 0.95); backdrop-filter: blur(10px);">
@@ -974,7 +1052,7 @@
         </div>
     </section>
 
-    <!-- Enhanced Core Values Section -->
+    <!-- Core Values Section -->
     <section class="section-with-bg" style="background: linear-gradient(135deg, rgba(0,123,255,0.9), rgba(176,10,10,0.9)), url('images/assembly.jpg') no-repeat center center/cover;">
         <div class="container">
             <h2 class="text-center animate-on-scroll">Our Core Values</h2>
@@ -1004,7 +1082,7 @@
         </div>
     </section>
 
-    <!-- Enhanced Leadership Section -->
+    <!-- Leadership Section -->
     <section class="section bg-light">
         <div class="container">
             <h2 class="text-center animate-on-scroll">Visionary Leadership</h2>
@@ -1014,7 +1092,7 @@
                     <div class="leadership-card">
                         <img src="Gallery/rev ben.jpg" alt="Rev. Ben Thuku - Director" class="leadership-img img-fluid">
                         <h3>Rev. Ben Thuku</h3>
-                        <p class="text-primary fw-bold">Director & Visionary</p>
+                        <p class="fw-bold" style="color: var(--primary-red);">Director & Visionary</p>
                         <p>A passionate educator and spiritual leader, Rev. Ben brings years of experience in Christian education and community development. His vision for holistic learning continues to shape our school's direction.</p>
                         <div class="social-links mt-3">
                             <i class="fas fa-quote-left text-muted"></i>
@@ -1026,7 +1104,7 @@
                     <div class="leadership-card">
                         <img src="Gallery/pst jean.jpg" alt="Pst. Jean Thuku - Co-Director" class="leadership-img img-fluid">
                         <h3>Pst. Jean Thuku</h3>
-                        <p class="text-primary fw-bold">Co-Director & Educational Excellence Advocate</p>
+                        <p class="fw-bold" style="color: var(--primary-red);">Co-Director & Educational Excellence Advocate</p>
                         <p>Pastor Jean's commitment to educational excellence and character development ensures that every student receives personalized attention and care. Her nurturing approach creates a family atmosphere at HCS.</p>
                         <div class="social-links mt-3">
                             <i class="fas fa-quote-left text-muted"></i>
@@ -1038,7 +1116,7 @@
         </div>
     </section>
 
-    <!-- Enhanced Gallery Section -->
+    <!-- Gallery Section -->
     <section class="section">
         <div class="container">
             <h2 class="text-center animate-on-scroll">Life at Heriwadi</h2>
@@ -1081,7 +1159,7 @@
         </div>
     </section>
 
-    <!-- Enhanced Call-to-Action Section -->
+    <!-- Call-to-Action Section -->
     <section class="cta-section">
         <div class="container">
             <div class="animate-on-scroll">
@@ -1100,45 +1178,55 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Enhanced Footer -->
-    <footer class="bg-dark text-white py-5">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <h5>Heriwadi Christian School</h5>
-                    <p>Nurturing minds, hearts, and spirits for tomorrow's leaders since 2018.</p>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="About-us.html">About Us</a></li>
+                        <li><a href="Admissions.html">Admissions</a></li>
+                        <li><a href="Gallery.html">Gallery</a></li>
+                        <li><a href="Contact-us.html">Contact Us</a></li>
+                    </ul>
                 </div>
-                <div class="col-lg-6 text-lg-end">
-                    <div class="social-links mb-3">
-                        <a href="#" class="text-white me-3" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white me-3" style="font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                <div class="col-md-4">
+                    <h4>Contact Information</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt"></i> Ongata Rongai, Along Maasai Lodge-Rimpa Road</li>
+                        <li><i class="fas fa-phone"></i> +254 723 322 449</li>
+                        <li><i class="fas fa-envelope"></i> heriwadics@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
                     </div>
-                    <p>&copy; 2025 Heriwadi Christian School. All rights reserved.</p>
+                    <div class="mt-3">
+                        <a href="privacy.html" class="text-white mr-2">Privacy Policy</a>
+                        <a href="Terms-of-use.html" class="text-white">Terms of Use</a>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="mb-0">
-                        <a href="privacy.html" class="text-white-50 me-3">Privacy Policy</a>
-                        <a href="Terms-of-use.html" class="text-white-50">Terms of Use</a>
-                    </p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="mb-0 text-white-50">Made with ❤️ for educational excellence</p>
-                </div>
-            </div>
+            <hr class="bg-light">
+            <p class="text-center">© 2025 Heriwadi Christian Schools Ltd. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
         // Page Loader
         window.addEventListener('load', function() {
             const loader = document.getElementById('pageLoader');
+            document.body.classList.add('loaded');
             setTimeout(() => {
                 loader.style.opacity = '0';
                 setTimeout(() => {
@@ -1157,6 +1245,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -1197,12 +1286,25 @@
                 navbar.style.background = 'linear-gradient(135deg, rgba(176,10,10,0.95), rgba(139,0,0,0.95))';
                 navbar.style.backdropFilter = 'blur(10px)';
             } else {
-                navbar.style.background = 'linear-gradient(135deg, var(--primary-color), #8b0000)';
+                navbar.style.background = 'linear-gradient(135deg, var(--primary-red), var(--dark-red))';
                 navbar.style.backdropFilter = 'none';
             }
         });
 
-        // Add hover effects to cards
+        // Enhanced Contact Item Animations
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+                this.style.background = 'rgba(255,255,255,0.25)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.background = 'rgba(255,255,255,0.1)';
+            });
+        });
+
+        // Enhanced Card Hover Effects
         document.querySelectorAll('.enhanced-card, .value-item, .leadership-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
@@ -1213,7 +1315,21 @@
             });
         });
 
-        // Typing effect for hero subtitle
+        // Enhanced WhatsApp Button Interaction
+        const whatsappBtn = document.querySelector('.whatsapp-button');
+        if (whatsappBtn) {
+            whatsappBtn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.15) rotate(10deg)';
+                this.style.boxShadow = '0 15px 40px rgba(37,211,102,0.7)';
+            });
+            
+            whatsappBtn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.boxShadow = '0 8px 25px rgba(37,211,102,0.4)';
+            });
+        }
+
+        // Typing Effect for Hero Subtitle
         const heroSubtitle = document.querySelector('.hero-subtitle');
         if (heroSubtitle) {
             const text = heroSubtitle.textContent;
