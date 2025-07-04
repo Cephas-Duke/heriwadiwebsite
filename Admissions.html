@@ -4,45 +4,143 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admissions - Heriwadi Christian Schools</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- External CSS and Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --primary-red: #b00a0a;
+      --dark-red: #8b0000;
+      --light-red: #dc3545;
+      --gold: #ffd700;
+      --dark-blue: #1a1a2e;
+      --light-gray: #f8f9fa;
+      --text-dark: #2c3e50;
+      --white: #ffffff;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    :root {
-      --primary-color: #c00;
-      --primary-dark: #a00;
-      --primary-light: #ff4444;
-      --secondary-color: #007bff;
-      --accent-color: #25d366;
-      --text-dark: #2c3e50;
-      --text-light: #6c757d;
-      --bg-light: #f8f9fa;
-      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
-      --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.1);
-      --border-radius: 12px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --glass-bg: rgba(255, 255, 255, 0.25);
-      --glass-border: rgba(255, 255, 255, 0.18);
-    }
-
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-dark);
+      font-family: 'Poppins', sans-serif;
       line-height: 1.6;
+      color: var(--text-dark);
       overflow-x: hidden;
     }
 
+    /* Top Bar Styles */
+    .top-bar {
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
+      color: white;
+      padding: 15px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .top-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .logo img {
+      max-width: 80px;
+      height: auto;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .logo img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-end;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .contact-item i {
+      color: var(--gold);
+      font-size: 1.2em;
+    }
+
+    .contact-item a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-red), var(--dark-red)) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      padding: 10px 20px !important;
+      margin: 0 5px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Original Admissions Page Styles */
     /* Smooth scroll */
     html {
       scroll-behavior: smooth;
@@ -111,137 +209,17 @@
 
     @keyframes glow {
       0%, 100% {
-        box-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+        box-shadow: 0 0 5px var(--primary-red), 0 0 10px var(--primary-red);
       }
       50% {
-        box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+        box-shadow: 0 0 20px var(--primary-red), 0 0 30px var(--primary-red);
       }
-    }
-
-    /* Top Bar Enhanced */
-    .top-bar {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 15px 0;
-      box-shadow: var(--shadow-light);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .top-bar::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      animation: shimmer 3s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    .top-bar .logo img {
-      height: 70px;
-      transition: var(--transition);
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-    }
-
-    .top-bar .logo img:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
-    }
-
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 16px;
-      padding: 8px 16px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      transition: var(--transition);
-    }
-
-    .contact-item:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-medium);
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    .contact-item i {
-      color: var(--primary-color);
-      font-size: 18px;
-      animation: bounce 2s infinite;
-    }
-
-    /* Enhanced Navbar */
-    .navbar {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-      padding: 15px 0;
-      box-shadow: var(--shadow-medium);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-    }
-
-    .navbar-brand {
-      color: #fff !important;
-      font-size: 28px;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .navbar-nav .nav-link {
-      color: #fff !important;
-      font-size: 16px;
-      font-weight: 500;
-      margin: 0 10px;
-      padding: 8px 16px !important;
-      border-radius: 20px;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .navbar-nav .nav-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: var(--transition);
-    }
-
-    .navbar-nav .nav-link:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .navbar-nav .nav-link:hover::before {
-      left: 100%;
     }
 
     /* Hero Section Enhanced */
     .hero-section {
       background: 
-        linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(204,0,0,0.3) 100%),
+        linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(176,10,10,0.3) 100%),
         url('images/parade.jpg') no-repeat center center/cover;
       color: #fff;
       padding: 200px 0;
@@ -292,7 +270,7 @@
     }
 
     .hero-section .btn {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      background: linear-gradient(135deg, var(--primary-red) 0%, var(--light-red) 100%);
       color: #fff;
       padding: 15px 40px;
       font-size: 1.3rem;
@@ -301,7 +279,7 @@
       border-radius: 50px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       animation: fadeInUp 1.5s ease-out 0.6s both, pulse 2s infinite 2s;
@@ -315,7 +293,7 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .hero-section .btn:hover {
@@ -342,7 +320,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(204,0,0,0.03) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(176,10,10,0.03) 0%, transparent 70%);
       animation: rotate 20s linear infinite;
     }
 
@@ -357,7 +335,7 @@
       font-size: 2.8rem;
       font-weight: 700;
       font-family: 'Poppins', sans-serif;
-      color: var(--primary-color);
+      color: var(--primary-red);
       position: relative;
       display: inline-block;
       width: 100%;
@@ -371,7 +349,7 @@
       transform: translateX(-50%);
       width: 80px;
       height: 4px;
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      background: linear-gradient(135deg, var(--primary-red), var(--gold));
       border-radius: 2px;
     }
 
@@ -381,9 +359,9 @@
       margin-bottom: 40px;
       padding: 40px 20px;
       background: rgba(255,255,255,0.9);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-light);
-      transition: var(--transition);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       animation: fadeInUp 0.8s ease-out;
@@ -404,13 +382,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(204,0,0,0.1), transparent);
-      transition: var(--transition);
+      background: linear-gradient(135deg, rgba(176,10,10,0.1), transparent);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .admission-process .step:hover {
       transform: translateY(-10px);
-      box-shadow: var(--shadow-heavy);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
 
     .admission-process .step:hover::before {
@@ -419,14 +397,14 @@
 
     .admission-process .step i {
       font-size: 3rem;
-      color: var(--primary-color);
+      color: var(--primary-red);
       margin-bottom: 20px;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .admission-process .step:hover i {
       animation: bounce 1s ease-in-out;
-      color: var(--primary-light);
+      color: var(--light-red);
     }
 
     /* Form Enhanced */
@@ -444,7 +422,7 @@
       color: var(--text-dark);
       margin-bottom: 10px;
       display: block;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .admission-form input,
@@ -453,9 +431,9 @@
       width: 100%;
       padding: 15px 20px;
       border: 2px solid #e9ecef;
-      border-radius: var(--border-radius);
+      border-radius: 12px;
       font-size: 16px;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       background: rgba(255,255,255,0.9);
     }
 
@@ -463,13 +441,13 @@
     .admission-form textarea:focus,
     .admission-form select:focus {
       outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(204,0,0,0.1);
+      border-color: var(--primary-red);
+      box-shadow: 0 0 0 3px rgba(176,10,10,0.1);
       transform: translateY(-2px);
     }
 
     .admission-form button {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      background: linear-gradient(135deg, var(--primary-red) 0%, var(--light-red) 100%);
       color: #fff;
       padding: 15px 40px;
       font-size: 1.2rem;
@@ -478,7 +456,7 @@
       border-radius: 50px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
     }
@@ -493,12 +471,12 @@
       background: rgba(255,255,255,0.3);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .admission-form button:hover {
       transform: translateY(-3px);
-      box-shadow: var(--shadow-medium);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
     .admission-form button:hover::before {
@@ -542,7 +520,7 @@
       cursor: pointer;
       font-size: 18px;
       font-weight: 600;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       display: inline-block;
       position: relative;
@@ -561,27 +539,38 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: linear-gradient(135deg, var(--accent-color) 0%, #128c7e 100%);
-      color: white;
-      padding: 20px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 35px;
       text-decoration: none;
-      font-size: 28px;
-      box-shadow: var(--shadow-heavy);
-      animation: pulse 2s infinite;
+      box-shadow: 0 8px 25px rgba(37,211,102,0.4);
       z-index: 1000;
-      transition: var(--transition);
+      transition: all 0.3s ease;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
     }
 
     .whatsapp-button:hover {
-      animation: none;
       transform: scale(1.1);
-      box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
+      color: white;
+      box-shadow: 0 12px 35px rgba(37,211,102,0.6);
+      animation: none;
     }
 
     /* Footer Enhanced */
     footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-red) 100%);
       color: white;
       padding: 40px 0;
       text-align: center;
@@ -596,22 +585,28 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+      background: linear-gradient(135deg, var(--primary-red), var(--gold));
     }
 
     footer a {
       color: #ecf0f1;
       text-decoration: none;
-      transition: var(--transition);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     footer a:hover {
-      color: var(--primary-light);
+      color: var(--gold);
       text-decoration: none;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      .contact-info {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
       .hero-section h1 {
         font-size: 2.5rem;
       }
@@ -630,6 +625,14 @@
       
       .requirements-container {
         padding: 20px;
+      }
+
+      .whatsapp-button {
+        width: 60px;
+        height: 60px;
+        font-size: 25px;
+        bottom: 20px;
+        right: 20px;
       }
     }
 
@@ -652,7 +655,7 @@
 
     /* Additional CSS for enhanced interactions */
     .form-group.focused label {
-      color: var(--primary-color);
+      color: var(--primary-red);
       transform: translateY(-2px);
     }
 
@@ -733,7 +736,7 @@
       content: '';
       position: absolute;
       width: 6px;
-      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(to bottom, var(--primary-red), var(--gold));
       top: 0;
       bottom: 0;
       left: 50%;
@@ -754,7 +757,7 @@
       width: 25px;
       height: 25px;
       right: -12px;
-      background: var(--primary-color);
+      background: var(--primary-red);
       border: 4px solid white;
       top: 15px;
       border-radius: 50%;
@@ -804,7 +807,7 @@
       background: white;
       position: relative;
       border-radius: 6px;
-      box-shadow: var(--shadow-light);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     @media screen and (max-width: 768px) {
@@ -833,6 +836,32 @@
         left: 0%;
       }
     }
+
+    /* Ripple effect for buttons */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: scale(0);
+      animation: ripple-animation 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    .hover-effect {
+      transition: all 0.3s ease;
+    }
+
+    .hover-effect:hover {
+      color: var(--gold) !important;
+      transform: translateX(5px);
+    }
   </style>
 </head>
 <body>
@@ -842,25 +871,25 @@
       <div class="container">
         <div class="row align-items-center">
           <!-- Logo -->
-          <div class="col-12 col-md-4 text-center text-md-left">
+          <div class="col-12 col-md-4 text-center text-md-start mb-3 mb-md-0">
             <div class="logo">
               <img src="Gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" class="img-fluid">
             </div>
           </div>
           <!-- Contact Info -->
           <div class="col-12 col-md-8">
-            <div class="contact-info text-center text-md-right">
+            <div class="contact-info">
               <div class="contact-item">
-                <div><i class="fas fa-phone"></i></div>
-                <div><span>Phone:</span> <a href="tel:+254723322449">+254723322449</a></div>
+                <i class="fas fa-phone"></i>
+                <div><a href="tel:+254723322449">+254723322449</a></div>
               </div>
               <div class="contact-item">
-                <div><i class="fas fa-envelope"></i></div>
-                <div><span>Email:</span> <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
+                <i class="fas fa-envelope"></i>
+                <div><a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
               </div>
               <div class="contact-item">
-                <div><i class="fas fa-map-marker-alt"></i></div>
-                <div><span>Address:</span> <a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
+                <i class="fas fa-map-marker-alt"></i>
+                <div><a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
               </div>
             </div>
           </div>
@@ -868,28 +897,41 @@
       </div>
     </div>
     
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Heriwadi Christian School</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-graduation-cap me-2"></i>
+          Heriwadi Christian Schools Ltd
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Home
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="About-us.html">About Us</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="Admissions.html">Admissions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Gallery.html">Gallery</a>
+              <a class="nav-link" href="About-us.html">
+                <i class="fas fa-info-circle me-1"></i>About Us
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Contact-us.html">Contact Us</a>
+              <a class="nav-link active" href="Admissions.html">
+                <i class="fas fa-user-graduate me-1"></i>Admissions
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Gallery.html">
+                <i class="fas fa-images me-1"></i>Gallery
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Contact-us.html">
+                <i class="fas fa-phone me-1"></i>Contact Us
+              </a>
             </li>
           </ul>
         </div>
@@ -983,21 +1025,21 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card loading" style="color: #2c3e50; font-size: 1.2rem; padding: 20px;">
-            <i class="fas fa-graduation-cap" style="font-size: 3rem; color: #c00; margin-bottom: 20px;"></i>
+            <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 20px;"></i>
             <h3>Quality Education</h3>
             <p style="color: #2c3e50; font-size: 1rem;">We provide a holistic and world-class education that prepares students for success in academics and life.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card loading" style="color: #2c3e50; font-size: 1.2rem; padding: 20px;">
-            <i class="fas fa-users" style="font-size: 3rem; color: #c00; margin-bottom: 20px;"></i>
+            <i class="fas fa-users" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 20px;"></i>
             <h3>Experienced Staff</h3>
             <p style="color: #2c3e50; font-size: 1rem;">Our teachers are highly qualified and experienced professionals dedicated to student excellence.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card loading" style="color: #2c3e50; font-size: 1.2rem; padding: 20px;">
-            <i class="fas fa-heart" style="font-size: 3rem; color: #c00; margin-bottom: 20px;"></i>
+            <i class="fas fa-heart" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 20px;"></i>
             <h3>Nurturing Environment</h3>
             <p style="color: #2c3e50; font-size: 1rem;">We foster a supportive and inclusive Christian community where every student thrives.</p>
           </div>
@@ -1092,12 +1134,12 @@
         <div class="card loading">
           <div class="card-header" id="headingOne">
             <h3 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 What is the admission deadline?
               </button>
             </h3>
           </div>
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
             <div class="card-body">
               We accept applications throughout the year, but we recommend applying at least 2 months before the start of the term for priority consideration.
             </div>
@@ -1106,12 +1148,12 @@
         <div class="card loading fade-in-delay-1">
           <div class="card-header" id="headingTwo">
             <h3 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 What are the school hours?
               </button>
             </h3>
           </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
             <div class="card-body">
               School hours are from 8:00 AM to 3:30 PM Monday through Friday. We also offer after-school programs and extracurricular activities until 5:00 PM.
             </div>
@@ -1120,26 +1162,26 @@
         <div class="card loading fade-in-delay-2">
           <div class="card-header" id="headingThree">
             <h3 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 How do I know that my child has been accepted?
               </button>
             </h3>
           </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
             <div class="card-body">
               You will typically receive an admission decision within 1 week after the assessment. If accepted, you will be required to complete the registration process and pay the necessary fees.
             </div>
           </div>
         </div>
         <div class="card loading fade-in-delay-2">
-          <div class="card-header" id="headingThree">
+          <div class="card-header" id="headingFour">
             <h3 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 Does your school offer transport services?
               </button>
             </h3>
           </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
             <div class="card-body">
               Yes, we offer transport services for students within designated routes at affordable rates. Please contact our admissions office for more details on routes and fees.
             </div>
@@ -1202,13 +1244,12 @@
         </div>
       </div>
       <hr class="bg-light">
-      <p class="text-center">© 2025 Heriwadi Christian School. All rights reserved.</p>
+      <p class="text-center">© 2025 Heriwadi Christian Schools Ltd. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
   <script>
     // Enhanced Form Submission
@@ -1236,12 +1277,12 @@
 
       // Format the message for WhatsApp
       const whatsappMessage = `🎓 *New Admission Application*%0A%0A` +
-                              `👤 *Full Name:* ${fullName}%0A` +
-                              `📧 *Email:* ${email}%0A` +
-                              `📱 *Phone:* ${phone}%0A` +
-                              `🏫 *Grade Applying For:* ${grade}%0A` +
-                              `💬 *Additional Information:* ${message || 'None'}%0A%0A` +
-                              `Thank you for your interest in Heriwadi Christian Schools! 🙏`;
+                            `👤 *Full Name:* ${fullName}%0A` +
+                            `📧 *Email:* ${email}%0A` +
+                            `📱 *Phone:* ${phone}%0A` +
+                            `🏫 *Grade Applying For:* ${grade}%0A` +
+                            `💬 *Additional Information:* ${message || 'None'}%0A%0A` +
+                            `Thank you for your interest in Heriwadi Christian Schools! 🙏`;
 
       // Show loading animation
       const submitBtn = event.target.querySelector('button[type="submit"]');
@@ -1371,10 +1412,54 @@
       });
     });
 
-    // Initialize Bootstrap tooltips
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+    // Enhanced contact item animations
+    document.querySelectorAll('.contact-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px) scale(1.02)';
+        this.style.background = 'rgba(255,255,255,0.25)';
+      });
+      
+      item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.background = 'rgba(255,255,255,0.1)';
+      });
+    });
+
+    // Add click ripple effect to buttons
+    document.querySelectorAll('.btn, .download-button').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    });
+
+    // WhatsApp button enhanced animation
+    const whatsappBtn = document.querySelector('.whatsapp-button');
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.15) rotate(10deg)';
+        this.style.boxShadow = '0 15px 40px rgba(37,211,102,0.7)';
+      });
+      
+      whatsappBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+        this.style.boxShadow = '0 8px 25px rgba(37,211,102,0.4)';
+      });
+    }
   </script>
 </body>
 </html>
