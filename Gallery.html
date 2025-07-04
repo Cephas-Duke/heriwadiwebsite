@@ -4,12 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery - Heriwadi Christian Schools</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <!-- Custom CSS -->
+  <!-- External CSS and Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --primary-red: #b00a0a;
+      --dark-red: #8b0000;
+      --light-red: #dc3545;
+      --gold: #ffd700;
+      --dark-blue: #1a1a2e;
+      --light-gray: #f8f9fa;
+      --text-dark: #2c3e50;
+      --white: #ffffff;
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -17,112 +32,116 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: linear-gradient(135deg, var(--light-gray) 0%, #c3cfe2 100%);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Enhanced Top Bar */
+    /* Top Bar Styles */
     .top-bar {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
+      color: white;
       padding: 15px 0;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
     }
-    
-    .top-bar .logo img {
-      height: 70px;
+
+    .top-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .logo img {
+      max-width: 80px;
+      height: auto;
       border-radius: 50%;
-      border: 3px solid white;
       transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    
-    .top-bar .logo img:hover {
-      transform: scale(1.1);
+
+    .logo img:hover {
+      transform: scale(1.1) rotate(5deg);
     }
-    
+
     .contact-info {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 20px;
+      justify-content: flex-end;
     }
-    
+
     .contact-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 16px;
+      padding: 8px 15px;
       background: rgba(255,255,255,0.1);
-      padding: 10px 15px;
       border-radius: 25px;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
-    
+
     .contact-item:hover {
       background: rgba(255,255,255,0.2);
       transform: translateY(-2px);
     }
-    
+
     .contact-item i {
-      color: #fff;
-      font-size: 18px;
-    }
-    
-    .contact-item span {
-      font-weight: 600;
-      color: #fff;
-    }
-    
-    .contact-item a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .contact-item a:hover {
-      color: #ffd700;
+      color: var(--gold);
+      font-size: 1.2em;
     }
 
-    /* Enhanced Navbar */
-    .navbar {
-      background: linear-gradient(135deg, #b00a0a 0%, #8B0000 100%);
-      padding: 15px 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    .contact-item a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
     }
-    
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-red), var(--dark-red)) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
     .navbar-brand {
-      color: #fff !important;
-      font-size: 28px;
       font-weight: 700;
+      font-size: 1.5rem;
+      color: white !important;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
-    
-    .navbar-nav .nav-link {
-      color: #fff !important;
-      font-size: 18px;
+
+    .nav-link {
+      color: white !important;
       font-weight: 500;
-      margin: 0 15px;
+      padding: 10px 20px !important;
+      margin: 0 5px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
       position: relative;
-      transition: all 0.3s ease;
     }
-    
-    .navbar-nav .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: -5px;
-      left: 50%;
-      background: #ffd700;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-    
-    .navbar-nav .nav-link:hover::after,
-    .navbar-nav .nav-link.active::after {
-      width: 100%;
+
+    .nav-link:hover, .nav-link.active {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     /* Hero Banner */
@@ -132,20 +151,20 @@
       overflow: hidden;
       border-radius: 20px;
       margin: 30px 0;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      box-shadow: var(--shadow-xl);
     }
-    
+
     .hero-banner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 8s ease-in-out;
     }
-    
+
     .hero-banner:hover img {
       transform: scale(1.1);
     }
-    
+
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -157,13 +176,13 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .hero-content {
       text-align: center;
       color: white;
       z-index: 2;
     }
-    
+
     .hero-content h1 {
       font-size: 4rem;
       font-weight: 700;
@@ -171,7 +190,7 @@
       text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
       animation: fadeInUp 1s ease-out;
     }
-    
+
     .hero-content p {
       font-size: 1.4rem;
       font-weight: 300;
@@ -184,9 +203,9 @@
       text-align: center;
       margin: 50px 0;
     }
-    
+
     .filter-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
       color: white;
       border: none;
       padding: 12px 30px;
@@ -196,14 +215,14 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: var(--shadow-lg);
     }
-    
+
     .filter-btn:hover,
     .filter-btn.active {
-      background: linear-gradient(135deg, #b00a0a 0%, #8B0000 100%);
+      background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      box-shadow: var(--shadow-xl);
     }
 
     /* Gallery Grid */
@@ -213,33 +232,33 @@
       gap: 30px;
       padding: 20px 0;
     }
-    
+
     .gallery-item {
       position: relative;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: var(--shadow-xl);
       transition: all 0.4s ease;
       cursor: pointer;
       background: white;
     }
-    
+
     .gallery-item:hover {
       transform: translateY(-10px);
       box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     }
-    
+
     .gallery-item img {
       width: 100%;
       height: 250px;
       object-fit: cover;
       transition: transform 0.4s ease;
     }
-    
+
     .gallery-item:hover img {
       transform: scale(1.1);
     }
-    
+
     .gallery-overlay {
       position: absolute;
       top: 0;
@@ -253,22 +272,22 @@
       align-items: flex-end;
       padding: 20px;
     }
-    
+
     .gallery-item:hover .gallery-overlay {
       opacity: 1;
     }
-    
+
     .gallery-info {
       color: white;
       text-align: left;
     }
-    
+
     .gallery-info h4 {
       font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 5px;
     }
-    
+
     .gallery-info p {
       font-size: 0.9rem;
       opacity: 0.9;
@@ -279,7 +298,7 @@
       opacity: 0;
       animation: fadeInUp 0.6s ease-out forwards;
     }
-    
+
     .gallery-item:nth-child(1) { animation-delay: 0.1s; }
     .gallery-item:nth-child(2) { animation-delay: 0.2s; }
     .gallery-item:nth-child(3) { animation-delay: 0.3s; }
@@ -299,7 +318,7 @@
       background: rgba(0,0,0,0.9);
       backdrop-filter: blur(5px);
     }
-    
+
     .modal-content {
       position: relative;
       max-width: 90%;
@@ -307,15 +326,15 @@
       margin: 5% auto;
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: var(--shadow-xl);
     }
-    
+
     .modal-content img {
       width: 100%;
       height: auto;
       display: block;
     }
-    
+
     .modal-close {
       position: absolute;
       top: 20px;
@@ -326,11 +345,11 @@
       z-index: 10000;
       transition: color 0.3s ease;
     }
-    
+
     .modal-close:hover {
-      color: #ffd700;
+      color: var(--gold);
     }
-    
+
     .modal-nav {
       position: absolute;
       top: 50%;
@@ -345,16 +364,16 @@
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
     }
-    
+
     .modal-nav:hover {
       background: rgba(255,255,255,0.3);
       transform: translateY(-50%) scale(1.1);
     }
-    
+
     .modal-prev {
       left: 30px;
     }
-    
+
     .modal-next {
       right: 30px;
     }
@@ -364,40 +383,74 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-      color: white;
-      padding: 20px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: var(--white);
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
       font-size: 28px;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      box-shadow: var(--shadow-xl);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 1000;
-      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
     }
-    
+
     .whatsapp-button:hover {
-      color: white;
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
+      animation: none;
+      color: var(--white);
       text-decoration: none;
     }
 
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
     /* Footer */
-    footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      color: white;
+    .footer {
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
+      color: var(--white);
+      padding: 50px 0 30px;
       text-align: center;
-      padding: 40px 0;
-      margin-top: 80px;
+      position: relative;
+      overflow: hidden;
     }
-    
-    footer a {
-      color: #ffd700;
-      transition: color 0.3s ease;
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+      animation: shimmer 3s infinite;
     }
-    
-    footer a:hover {
-      color: white;
+
+    .footer a {
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: var(--gold);
       text-decoration: none;
     }
 
@@ -412,36 +465,44 @@
         transform: translateY(0);
       }
     }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
 
     /* Responsive */
     @media (max-width: 768px) {
+      .contact-info {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
       .hero-content h1 {
         font-size: 2.5rem;
       }
-      
+
       .hero-content p {
         font-size: 1.1rem;
       }
-      
+
       .gallery-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
       }
-      
+
       .filter-btn {
         padding: 10px 20px;
         margin: 5px;
         font-size: 14px;
       }
-      
-      .contact-info {
-        flex-direction: column;
-        gap: 10px;
+
+      .navbar-brand {
+        font-size: 1.3rem;
+      }
+
+      .whatsapp-button {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
       }
     }
 
@@ -449,7 +510,7 @@
     .gallery-item[data-category]:not([data-category="all"]) {
       display: none;
     }
-    
+
     .gallery-item[data-category="all"],
     .gallery-item.show {
       display: block;
@@ -457,14 +518,13 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <!-- Top Bar -->
     <div class="top-bar">
       <div class="container">
         <div class="row align-items-center">
           <!-- Logo -->
-          <div class="col-12 col-md-4 text-center text-md-left mb-3 mb-md-0">
+          <div class="col-12 col-md-4 text-center text-md-start mb-3 mb-md-0">
             <div class="logo">
               <img src="Gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" class="img-fluid">
             </div>
@@ -474,15 +534,15 @@
             <div class="contact-info">
               <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <div><span>Phone:</span> <a href="tel:+254723322449">+254723322449</a></div>
+                <div><a href="tel:+254723322449">+254723322449</a></div>
               </div>
               <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <div><span>Email:</span> <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
+                <div><a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
               </div>
               <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <div><span>Address:</span> <a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai, Maasai Lodge-Rimpa Road</a></div>
+                <div><a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
               </div>
             </div>
           </div>
@@ -490,29 +550,41 @@
       </div>
     </div>
     
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Heriwadi Christian School</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-graduation-cap me-2"></i>
+          Heriwadi Christian Schools Ltd
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Home
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="About-us.html">About Us</a>
+              <a class="nav-link" href="About-us.html">
+                <i class="fas fa-info-circle me-1"></i>About Us
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Admissions.html">Admissions</a>
+              <a class="nav-link" href="Admissions.html">
+                <i class="fas fa-user-graduate me-1"></i>Admissions
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="Gallery.html">Gallery</a>
+              <a class="nav-link active" href="Gallery.html">
+                <i class="fas fa-images me-1"></i>Gallery
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Contact-us.html">Contact Us</a>
+              <a class="nav-link" href="Contact-us.html">
+                <i class="fas fa-phone me-1"></i>Contact Us
+              </a>
             </li>
           </ul>
         </div>
@@ -526,8 +598,8 @@
       <img src="Gallery/van-banner.jpg" alt="Gallery Banner">
       <div class="hero-overlay">
         <div class="hero-content">
-          <h1>Our Gallery</h1>
-          <p>Discover the vibrant life and memorable moments at Heriwadi Christian Schools</p>
+          <h1 class="fade-in">Our Gallery</h1>
+          <p class="fade-in-delay">Discover the vibrant life and memorable moments at Heriwadi Christian Schools</p>
         </div>
       </div>
     </div>
@@ -705,9 +777,9 @@
 
   <!-- Image Modal -->
   <div id="imageModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <button class="modal-nav modal-prev">&#10094;</button>
-    <button class="modal-nav modal-next">&#10095;</button>
+    <span class="modal-close">×</span>
+    <button class="modal-nav modal-prev">❮</button>
+    <button class="modal-nav modal-next">❯</button>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
@@ -719,20 +791,48 @@
   </a>
 
   <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Heriwadi Christian School. All rights reserved.</p>
-      <p>
-        <a href="privacy.html" target="_blank">Privacy Policy</a> 
-        <a href="Terms-of-use.html" target="_blank">Terms of Use</a>
-      </p>
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Quick Links</h4>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About-us.html">About Us</a></li>
+            <li><a href="Admissions.html">Admissions</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="Contact-us.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Contact Information</h4>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt"></i> Ongata Rongai, Along Maasai Lodge-Rimpa Road</li>
+            <li><i class="fas fa-phone"></i> +254 723 322 449</li>
+            <li><i class="fas fa-envelope"></i> heriwadics@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+          </div>
+          <div class="mt-3">
+            <a href="privacy.html" class="text-white mr-2">Privacy Policy</a>
+            <a href="Terms-of-use.html" class="text-white">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <p class="text-center">© 2025 Heriwadi Christian Schools Ltd. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
   <script>
     // Gallery functionality
@@ -860,15 +960,62 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
           }
         });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
       });
 
       galleryItems.forEach(item => {
         observer.observe(item);
       });
+
+      // Preloader effect
+      window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        document.body.style.opacity = '1';
+      });
+
+      // Enhanced contact item animations
+      document.querySelectorAll('.contact-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-3px) scale(1.02)';
+          this.style.background = 'rgba(255,255,255,0.25)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+          this.style.background = 'rgba(255,255,255,0.1)';
+        });
+      });
+
+      // Enhanced button hover effects
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px)';
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Enhanced WhatsApp button interaction
+      const whatsappBtn = document.querySelector('.whatsapp-button');
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.15) rotate(10deg)';
+          this.style.boxShadow = '0 15px 40px rgba(37,211,102,0.7)';
+        });
+        
+        whatsappBtn.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1) rotate(0deg)';
+          this.style.boxShadow = '0 8px 25px rgba(37,211,102,0.4)';
+        });
+      }
     });
   </script>
 </body>
