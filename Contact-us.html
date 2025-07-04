@@ -4,24 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Heriwadi Christian Schools</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- External CSS and Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --primary-red: #dc2626;
-      --dark-red: #991b1b;
-      --light-red: #fef2f2;
-      --accent-blue: #3b82f6;
-      --dark-bg: #0f172a;
-      --gray-100: #f8fafc;
-      --gray-200: #e2e8f0;
-      --gray-300: #cbd5e1;
-      --gray-600: #475569;
-      --gray-800: #1e293b;
+      --primary-red: #b00a0a;
+      --dark-red: #8b0000;
+      --light-red: #dc3545;
+      --gold: #ffd700;
+      --dark-blue: #1a1a2e;
+      --light-gray: #f8f9fa;
+      --text-dark: #2c3e50;
       --white: #ffffff;
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -34,13 +32,117 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Poppins', sans-serif;
       line-height: 1.6;
-      color: var(--gray-800);
+      color: var(--text-dark);
       overflow-x: hidden;
     }
 
-    /* Animated Background */
+    /* Top Bar Styles */
+    .top-bar {
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
+      color: white;
+      padding: 15px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .top-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .logo img {
+      max-width: 80px;
+      height: auto;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .logo img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-end;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .contact-item i {
+      color: var(--gold);
+      font-size: 1.2em;
+    }
+
+    .contact-item a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-red), var(--dark-red)) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      padding: 10px 20px !important;
+      margin: 0 5px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Hero Section */
     .hero-bg {
       position: relative;
       background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
@@ -113,70 +215,6 @@
       66% { transform: translateY(15px) rotate(240deg); }
     }
 
-    /* Enhanced Navbar */
-    .navbar {
-      background: rgba(220, 38, 38, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 0;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .navbar.scrolled {
-      background: rgba(220, 38, 38, 0.98);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .navbar-brand {
-      color: var(--white) !important;
-      font-size: 28px;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-    }
-
-    .navbar-brand:hover {
-      transform: scale(1.05);
-    }
-
-    .navbar-nav .nav-link {
-      color: var(--white) !important;
-      font-size: 16px;
-      font-weight: 500;
-      margin: 0 15px;
-      padding: 8px 16px !important;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .navbar-nav .nav-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: left 0.3s ease;
-      z-index: -1;
-    }
-
-    .navbar-nav .nav-link:hover::before,
-    .navbar-nav .nav-link.active::before {
-      left: 0;
-    }
-
-    .navbar-nav .nav-link:hover,
-    .navbar-nav .nav-link.active {
-      color: var(--white) !important;
-      transform: translateY(-2px);
-    }
-
-    /* Hero Section */
     .hero-section {
       position: relative;
       padding: 120px 0 80px;
@@ -226,7 +264,7 @@
     /* Contact Cards */
     .contact-section {
       padding: 100px 0;
-      background: linear-gradient(180deg, var(--gray-100) 0%, var(--white) 100%);
+      background: linear-gradient(180deg, var(--light-gray) 0%, var(--white) 100%);
       position: relative;
     }
 
@@ -243,7 +281,7 @@
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
-      border: 1px solid var(--gray-200);
+      border: 1px solid var(--light-gray);
       margin-bottom: 30px;
     }
 
@@ -254,7 +292,7 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-red), var(--accent-blue));
+      background: linear-gradient(90deg, var(--primary-red), var(--gold));
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
@@ -310,18 +348,18 @@
       font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 15px;
-      color: var(--gray-800);
+      color: var(--text-dark);
       font-family: 'Poppins', sans-serif;
     }
 
     .contact-card p {
       font-size: 1.1rem;
-      color: var(--gray-600);
+      color: var(--text-dark);
       margin: 0;
     }
 
     .contact-card a {
-      color: var(--gray-600);
+      color: var(--text-dark);
       text-decoration: none;
       transition: all 0.3s ease;
       position: relative;
@@ -354,7 +392,7 @@
       border-radius: 25px;
       box-shadow: var(--shadow-xl);
       position: relative;
-      border: 1px solid var(--gray-200);
+      border: 1px solid var(--light-gray);
     }
 
     .contact-form-container::before {
@@ -364,7 +402,7 @@
       left: -1px;
       right: -1px;
       bottom: -1px;
-      background: linear-gradient(45deg, var(--primary-red), var(--accent-blue), var(--primary-red));
+      background: linear-gradient(45deg, var(--primary-red), var(--gold), var(--primary-red));
       border-radius: 25px;
       z-index: -1;
       opacity: 0;
@@ -380,7 +418,7 @@
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 40px;
-      color: var(--gray-800);
+      color: var(--text-dark);
       font-family: 'Poppins', sans-serif;
       position: relative;
     }
@@ -393,7 +431,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary-red), var(--accent-blue));
+      background: linear-gradient(90deg, var(--primary-red), var(--gold));
       border-radius: 2px;
     }
 
@@ -404,7 +442,7 @@
 
     .form-group label {
       font-weight: 600;
-      color: var(--gray-800);
+      color: var(--text-dark);
       margin-bottom: 8px;
       display: block;
       font-size: 1rem;
@@ -413,7 +451,7 @@
     .form-control {
       width: 100%;
       padding: 15px 20px;
-      border: 2px solid var(--gray-300);
+      border: 2px solid var(--light-gray);
       border-radius: 12px;
       font-size: 1rem;
       transition: all 0.3s ease;
@@ -424,12 +462,12 @@
     .form-control:focus {
       outline: none;
       border-color: var(--primary-red);
-      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      box-shadow: 0 0 0 3px rgba(176, 10, 10, 0.1);
       transform: translateY(-2px);
     }
 
     .form-control::placeholder {
-      color: var(--gray-400);
+      color: #6b7280;
     }
 
     .submit-btn {
@@ -468,7 +506,7 @@
 
     .submit-btn:hover {
       transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(220, 38, 38, 0.4);
+      box-shadow: 0 15px 30px rgba(176, 10, 10, 0.4);
     }
 
     .submit-btn:active {
@@ -548,7 +586,7 @@
 
     /* Footer */
     .footer {
-      background: linear-gradient(135deg, var(--dark-bg), var(--gray-800));
+      background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
       color: var(--white);
       padding: 50px 0 30px;
       text-align: center;
@@ -585,32 +623,38 @@
     }
 
     .footer a:hover {
-      color: var(--primary-red);
+      color: var(--gold);
       text-decoration: none;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      .contact-info {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
       .hero-title {
         font-size: 2.5rem;
       }
-      
+
       .hero-subtitle {
         font-size: 1.1rem;
       }
-      
+
       .contact-form-container {
         padding: 30px 20px;
       }
-      
+
       .form-title {
         font-size: 2rem;
       }
-      
+
       .navbar-brand {
-        font-size: 22px;
+        font-size: 1.3rem;
       }
-      
+
       .whatsapp-button {
         width: 60px;
         height: 60px;
@@ -658,37 +702,128 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Form Validation */
+    .form-control.is-invalid {
+      border-color: var(--light-red);
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    }
+
+    .invalid-feedback {
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      font-size: 0.875rem;
+      color: var(--light-red);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .submit-btn:disabled:hover {
+      transform: none !important;
+      box-shadow: var(--shadow-lg) !important;
+    }
+
+    /* Ripple Effect */
+    .submit-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 600ms linear;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Enhanced Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Heriwadi Christian School</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="About-us.html">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Admissions.html">Admissions</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Gallery.html">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="Contact-us.html">Contact Us</a>
-          </li>
-        </ul>
+  <header>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Logo -->
+          <div class="col-12 col-md-4 text-center text-md-start mb-3 mb-md-0">
+            <div class="logo">
+              <img src="Gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" class="img-fluid">
+            </div>
+          </div>
+          <!-- Contact Info -->
+          <div class="col-12 col-md-8">
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div><a href="tel:+254723322449">+254723322449</a></div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div><a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div><a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+    
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-graduation-cap me-2"></i>
+          Heriwadi Christian Schools Ltd
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-home me-1"></i>Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About-us.html">
+                <i class="fas fa-info-circle me-1"></i>About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Admissions.html">
+                <i class="fas fa-user-graduate me-1"></i>Admissions
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Gallery.html">
+                <i class="fas fa-images me-1"></i>Gallery
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Contact-us.html">
+                <i class="fas fa-phone me-1"></i>Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero-bg">
@@ -699,8 +834,8 @@
     </div>
     <div class="hero-section">
       <div class="container">
-        <h1 class="hero-title">Get In Touch</h1>
-        <p class="hero-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        <h1 class="hero-title fade-in">Get In Touch</h1>
+        <p class="hero-subtitle fade-in-delay">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
       </div>
     </div>
   </section>
@@ -801,30 +936,48 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Heriwadi Christian School. All rights reserved.</p>
-      <p>
-        <a href="privacy.html" target="_blank">Privacy Policy</a> | 
-        <a href="Terms-of-use.html" target="_blank">Terms of Use</a>
-      </p>
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Quick Links</h4>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About-us.html">About Us</a></li>
+            <li><a href="Admissions.html">Admissions</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="Contact-us.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Contact Information</h4>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt"></i> Ongata Rongai, Along Maasai Lodge-Rimpa Road</li>
+            <li><i class="fas fa-phone"></i> +254 723 322 449</li>
+            <li><i class="fas fa-envelope"></i> heriwadics@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+          </div>
+          <div class="mt-3">
+            <a href="privacy.html" class="text-white mr-2">Privacy Policy</a>
+            <a href="Terms-of-use.html" class="text-white">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <p class="text-center">© 2025 Heriwadi Christian Schools Ltd. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
   <script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
     // Form submission with animation
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -835,6 +988,25 @@
       const phone = document.getElementById('phone').value;
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
+
+      // Validate form fields
+      if (!name || !email || !phone || !message) {
+        showFieldError(document.getElementById('name'), 'This field is required');
+        showFieldError(document.getElementById('email'), 'This field is required');
+        showFieldError(document.getElementById('phone'), 'This field is required');
+        showFieldError(document.getElementById('message'), 'This field is required');
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        showFieldError(document.getElementById('email'), 'Please enter a valid email address');
+        return;
+      }
+
+      if (!isValidPhone(phone)) {
+        showFieldError(document.getElementById('phone'), 'Please enter a valid phone number');
+        return;
+      }
 
       // Show success message
       const successMessage = document.getElementById('successMessage');
@@ -849,7 +1021,7 @@
         whatsappMessage += `*Subject:* ${subject}%0A`;
       }
       whatsappMessage += `*Message:* ${message}%0A%0A`;
-      whatsappMessage += `Sent from Heriwadi Christian School website`;
+      whatsappMessage += `Sent from Heriwadi Christian Schools website`;
 
       const whatsappNumber = '254723322449';
       const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
@@ -877,20 +1049,6 @@
         // Open WhatsApp
         window.open(whatsappLink, '_blank');
       }, 1500);
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
     });
 
     // Enhanced form validation with real-time feedback
@@ -961,79 +1119,85 @@
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
     // Observe elements for animation
-    document.querySelectorAll('.contact-card, .contact-form-container').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'all 0.6s ease-out';
+    document.querySelectorAll('.contact-card, .contact-form-container, .map-container').forEach(el => {
       observer.observe(el);
     });
 
-    // Add CSS for form validation
-    const style = document.createElement('style');
-    style.textContent = `
-      .form-control.is-invalid {
-        border-color: #dc3545;
-        box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
-      }
-      
-      .invalid-feedback {
-        display: block;
-        width: 100%;
-        margin-top: 5px;
-        font-size: 0.875rem;
-        color: #dc3545;
-      }
-      
-      .submit-btn:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-        transform: none !important;
-      }
-      
-      .submit-btn:disabled:hover {
-        transform: none !important;
-        box-shadow: var(--shadow-lg) !important;
-      }
-    `;
-    document.head.appendChild(style);
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
     // Preloader effect
     window.addEventListener('load', function() {
-      document.body.style.opacity = '0';
-      document.body.style.transition = 'opacity 0.5s ease-in-out';
+      document.body.classList.add('loaded');
+      document.body.style.opacity = '1';
+    });
+
+    // Enhanced contact item animations
+    document.querySelectorAll('.contact-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px) scale(1.02)';
+        this.style.background = 'rgba(255,255,255,0.25)';
+      });
       
-      setTimeout(() => {
-        document.body.style.opacity = '1';
-      }, 100);
+      item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.background = 'rgba(255,255,255,0.1)';
+      });
+    });
+
+    // Enhanced button hover effects
+    document.querySelectorAll('.submit-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+      });
+      
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
     });
 
     // Enhanced WhatsApp button interaction
     const whatsappBtn = document.querySelector('.whatsapp-button');
-    whatsappBtn.addEventListener('mouseenter', function() {
-      this.style.transform = 'scale(1.1) rotate(10deg)';
-    });
-    
-    whatsappBtn.addEventListener('mouseleave', function() {
-      this.style.transform = 'scale(1) rotate(0deg)';
-    });
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.15) rotate(10deg)';
+        this.style.boxShadow = '0 15px 40px rgba(37,211,102,0.7)';
+      });
+      
+      whatsappBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+        this.style.boxShadow = '0 8px 25px rgba(37,211,102,0.4)';
+      });
+    }
 
-    // Add ripple effect to buttons
-    function createRipple(event) {
-      const button = event.currentTarget;
+    // Add ripple effect to submit button
+    document.querySelector('.submit-btn').addEventListener('click', function(e) {
+      const button = e.currentTarget;
       const circle = document.createElement('span');
       const diameter = Math.max(button.clientWidth, button.clientHeight);
       const radius = diameter / 2;
 
       circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-      circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+      circle.style.left = `${e.clientX - button.offsetLeft - radius}px`;
+      circle.style.top = `${e.clientY - button.offsetTop - radius}px`;
       circle.classList.add('ripple');
 
       const ripple = button.getElementsByClassName('ripple')[0];
@@ -1042,35 +1206,7 @@
       }
 
       button.appendChild(circle);
-    }
-
-    // Add ripple effect styles
-    const rippleStyle = document.createElement('style');
-    rippleStyle.textContent = `
-      .submit-btn {
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .ripple {
-        position: absolute;
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple 600ms linear;
-        background-color: rgba(255, 255, 255, 0.3);
-      }
-      
-      @keyframes ripple {
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(rippleStyle);
-
-    // Apply ripple effect to submit button
-    document.querySelector('.submit-btn').addEventListener('click', createRipple);
+    });
   </script>
 </body>
 </html>
