@@ -209,7 +209,7 @@
       color: white;
       border: none;
       padding: 12px 30px;
-      margin: 0 10px;
+      margin: 0 10px 10px;
       border-radius: 50px;
       font-size: 16px;
       font-weight: 600;
@@ -298,13 +298,6 @@
       opacity: 0;
       animation: fadeInUp 0.6s ease-out forwards;
     }
-
-    .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-    .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-    .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-    .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-    .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-    .gallery-item:nth-child(6) { animation-delay: 0.6s; }
 
     /* Modal */
     .modal {
@@ -505,16 +498,6 @@
         right: 20px;
       }
     }
-
-    /* Hide items initially for filtering */
-    .gallery-item[data-category]:not([data-category="all"]) {
-      display: none;
-    }
-
-    .gallery-item[data-category="all"],
-    .gallery-item.show {
-      display: block;
-    }
   </style>
 </head>
 <body>
@@ -630,6 +613,66 @@
       </div>
       
       <div class="gallery-item" data-category="school">
+        <img src="Gallery/cbc2.jpg" alt="CBC Program 2">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Program</h4>
+            <p>Competency-based learning</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/cbc3.jpg" alt="CBC Implementation">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Implementation</h4>
+            <p>21st century learning skills</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/cbc4.jpg" alt="CBC Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Activities</h4>
+            <p>Hands-on learning experiences</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/cbc5.jpg" alt="CBC Education">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Education</h4>
+            <p>Holistic development approach</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/cbc6.jpg" alt="CBC Classroom">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Classroom</h4>
+            <p>Interactive learning environment</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/cbc7.jpg" alt="CBC Studies">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>CBC Studies</h4>
+            <p>Student-centered learning</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
         <img src="Gallery/class.jpg" alt="Classroom Activities">
         <div class="gallery-overlay">
           <div class="gallery-info">
@@ -648,14 +691,334 @@
           </div>
         </div>
       </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pp11.jpg" alt="PP1 Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>PP1 Activities</h4>
+            <p>Fun learning for young minds</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pp2.jpg" alt="PP2 Learning">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>PP2 Learning</h4>
+            <p>Building strong foundations</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pp21.jpg" alt="PP2 Class">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>PP2 Class</h4>
+            <p>Preparing for primary school</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pp22.jpg" alt="PP2 Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>PP2 Activities</h4>
+            <p>Engaging young learners</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g1.jpg" alt="Grade 1 Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 1 Learning</h4>
+            <p>Foundation building education</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g12.jpg" alt="Grade 1 Class">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 1 Class</h4>
+            <p>Starting the learning journey</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g13.jpg" alt="Grade 1 Studies">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 1 Studies</h4>
+            <p>Building literacy skills</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g21.jpg" alt="Grade 2 Learning">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 2 Learning</h4>
+            <p>Developing critical thinking</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g22.jpg" alt="Grade 2 Class">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 2 Class</h4>
+            <p>Growing academic excellence</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g23.jpg" alt="Grade 2 Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 2 Activities</h4>
+            <p>Collaborative learning</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g3.jpg" alt="Grade 3 Studies">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 3 Studies</h4>
+            <p>Advanced primary learning</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g31.jpg" alt="Grade 3 Class">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 3 Class</h4>
+            <p>Building knowledge foundation</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g32.jpg" alt="Grade 3 Learning">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 3 Learning</h4>
+            <p>Academic growth and development</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g4.jpg" alt="Grade 4 Studies">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 4 Studies</h4>
+            <p>Preparing for upper primary</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g41.jpg" alt="Grade 4 Class">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 4 Class</h4>
+            <p>Enhanced learning experiences</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g42.jpg" alt="Grade 4 Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 4 Activities</h4>
+            <p>Engaging educational content</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g5.jpg" alt="Grade 5 Learning">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 5 Learning</h4>
+            <p>Upper primary education</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g51.jpg" alt="Grade 5 Studies">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Grade 5 Studies</h4>
+            <p>Academic excellence pursuit</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/school1.jpg" alt="School Environment">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Environment</h4>
+            <p>Modern facilities for learning</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/school2.jpg" alt="School Facilities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Facilities</h4>
+            <p>Safe and conducive learning spaces</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/brighton.jpg" alt="Brighton House">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Brighton House</h4>
+            <p>Our school community</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/green-house.jpg" alt="Green House">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Green House</h4>
+            <p>Team spirit and excellence</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/teacher.jpg" alt="Dedicated Teachers">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Dedicated Teachers</h4>
+            <p>Committed to student success</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/teachers1.jpg" alt="Teaching Staff">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Teaching Staff</h4>
+            <p>Qualified and passionate educators</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/teachers2.jpg" alt="Staff Team">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Staff Team</h4>
+            <p>Working together for excellence</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/danc.jpg" alt="School Dance">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Creative Arts</h4>
+            <p>Expressing through dance</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/earlies.jpg" alt="Early Learners">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Early Learners</h4>
+            <p>Nurturing young minds</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/earlist.jpg" alt="Youngest Students">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Youngest Students</h4>
+            <p>Beginning their journey</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pg.JPG" alt="Playground Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Playground Fun</h4>
+            <p>Physical development and play</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pg1.jpg" alt="Playground Games">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Playground Games</h4>
+            <p>Active and healthy lifestyle</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pg2.jpg" alt="Outdoor Play">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Outdoor Play</h4>
+            <p>Learning through play</p>
+          </div>
+        </div>
+      </div>
 
       <!-- Graduation Images -->
       <div class="gallery-item" data-category="graduation">
         <img src="Gallery/1st-grad.jpg" alt="First Graduation">
         <div class="gallery-overlay">
           <div class="gallery-info">
-            <h4>Graduation Day</h4>
+            <h4>First Graduation</h4>
             <p>Celebrating academic achievements</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/grad.jpg" alt="Graduation Ceremony">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Graduation Day</h4>
+            <p>Proud graduates and families</p>
           </div>
         </div>
       </div>
@@ -664,18 +1027,158 @@
         <img src="Gallery/grad20231.jpg" alt="2023 Graduation">
         <div class="gallery-overlay">
           <div class="gallery-info">
-            <h4>2023 Graduation Ceremony</h4>
-            <p>Proud graduates and families</p>
+            <h4>2023 Graduation</h4>
+            <p>Celebrating success together</p>
           </div>
         </div>
       </div>
       
       <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradchurch.jpg" alt="Church Graduation">
+        <img src="Gallery/grad20232.jpg" alt="2023 Graduates">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>2023 Graduates</h4>
+            <p>Ready for the next chapter</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/grad20233.jpg" alt="2023 Ceremony">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>2023 Ceremony</h4>
+            <p>Memorable graduation moments</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/grad20234.jpg" alt="2023 Celebration">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>2023 Celebration</h4>
+            <p>Joy and achievement</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradchuch.jpg" alt="Church Graduation">
         <div class="gallery-overlay">
           <div class="gallery-info">
             <h4>Church Graduation</h4>
             <p>Faith-based celebration</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradchurch.jpg" alt="Church Ceremony">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Church Ceremony</h4>
+            <p>Spiritual milestone celebration</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradchurch3.jpg" alt="Church Graduation 3">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Church Graduation</h4>
+            <p>Community celebration</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradestudent2.jpg" alt="Graduate Student">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Graduate Student</h4>
+            <p>Achievement and pride</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradstudent1.jpg" alt="Graduating Student">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Graduating Student</h4>
+            <p>Success story</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradstudent3.jpg" alt="Graduate Portrait">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Graduate Portrait</h4>
+            <p>Celebrating accomplishment</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradstudent4.jpg" alt="Graduate Achievement">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Graduate Achievement</h4>
+            <p>Academic excellence recognized</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/gradstudent5.jpg" alt="Student Graduate">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Student Graduate</h4>
+            <p>Future leaders emerging</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/awardstudent.jpg" alt="Award Ceremony">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Student Awards</h4>
+            <p>Recognizing excellence</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/awardstudent1.jpg" alt="Award Winner">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Award Winner</h4>
+            <p>Outstanding performance</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/revbengrad.jpg" alt="Rev Ben Graduation">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Rev Ben at Graduation</h4>
+            <p>Blessing our graduates</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/rev ben.jpg" alt="Rev Ben">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Rev Ben</h4>
+            <p>Spiritual guidance and leadership</p>
           </div>
         </div>
       </div>
@@ -692,6 +1195,16 @@
       </div>
       
       <div class="gallery-item" data-category="activities">
+        <img src="Gallery/animalorph2.jpg" alt="Wildlife Learning">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Wildlife Learning</h4>
+            <p>Connecting with nature</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
         <img src="Gallery/swiming1.jpg" alt="Swimming Activities">
         <div class="gallery-overlay">
           <div class="gallery-info">
@@ -702,11 +1215,261 @@
       </div>
       
       <div class="gallery-item" data-category="activities">
+        <img src="Gallery/swiming 2.jpg" alt="Swimming Pool">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Swimming Pool</h4>
+            <p>Water sports and fitness</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/swiming 3.jpg" alt="Swimming Training">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Swimming Training</h4>
+            <p>Building confidence in water</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/swiming4.jpg" alt="Swimming Class">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Swimming Class</h4>
+            <p>Learning essential life skills</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
         <img src="Gallery/ministry1.jpg" alt="Ministry Activities">
         <div class="gallery-overlay">
           <div class="gallery-info">
             <h4>Ministry Programs</h4>
             <p>Spiritual development activities</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/ministry2.jpg" alt="Ministry Events">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Ministry Events</h4>
+            <p>Faith-based community</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/ministry-jean.jpg" alt="Ministry Jean">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Ministry Leadership</h4>
+            <p>Guiding spiritual growth</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/ministryrev.jpg" alt="Ministry Reverend">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Ministry Reverend</h4>
+            <p>Pastoral care and guidance</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/mission.jpg" alt="Mission Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Mission Activities</h4>
+            <p>Community outreach programs</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/parade.jpg" alt="School Parade">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Parade</h4>
+            <p>Unity and team spirit</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/games1.jpg" alt="Sports Games">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Sports Games</h4>
+            <p>Physical fitness and teamwork</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/assembly.jpg" alt="School Assembly">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Assembly</h4>
+            <p>Coming together as one</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/assembly2.jpg" alt="Morning Assembly">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Morning Assembly</h4>
+            <p>Starting the day together</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/present 1.jpg" alt="Presentation">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Student Presentation</h4>
+            <p>Building confidence and skills</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/peter.jpg" alt="Peter Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Student Activities</h4>
+            <p>Engaged and active learning</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/pst jean.jpg" alt="Pastor Jean">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Pastor Jean</h4>
+            <p>Spiritual mentorship</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/kisha.jpg" alt="Kisha Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Student Engagement</h4>
+            <p>Active participation</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/mdjean.jpg" alt="MD Jean">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Leadership</h4>
+            <p>Guiding our community</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/miniparent3.jpg" alt="Parent Involvement">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Parent Involvement</h4>
+            <p>Community partnership</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/min-parent1.jpg" alt="Parents Meeting">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Parents Meeting</h4>
+            <p>Working together for success</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/min-parent2.jpg" alt="Parent Conference">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Parent Conference</h4>
+            <p>Collaboration and communication</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/mini-parent4.jpg" alt="Family Engagement">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Family Engagement</h4>
+            <p>Building strong partnerships</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/mini-parent5.jpg" alt="Parent Day">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Parent Day</h4>
+            <p>Celebrating together</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/mini-parent6.jpg" alt="Family Event">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Family Event</h4>
+            <p>Community bonding</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/mini-parent7.jpg" alt="Parent Activity">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Parent Activity</h4>
+            <p>Engaging families</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/rachael-parent.jpg" alt="Rachael Parent">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Parent Support</h4>
+            <p>Active parent community</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/tr. alice.JPG" alt="Teacher Alice">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Teacher Alice</h4>
+            <p>Dedicated educator</p>
           </div>
         </div>
       </div>
@@ -723,52 +1486,262 @@
       </div>
       
       <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip14.jpg" alt="2024 School Trip">
+        <img src="Gallery/trip2.jpg" alt="Field Trip">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Field Trip</h4>
+            <p>Exploring new places</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/trip3.jpg" alt="School Excursion">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Excursion</h4>
+            <p>Adventure and discovery</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/trip4.jpg" alt="Trip Experience">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Experience</h4>
+            <p>Memorable moments together</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip.jpg" alt="2024 Trip">
         <div class="gallery-overlay">
           <div class="gallery-info">
             <h4>2024 School Trip</h4>
+            <p>Annual educational adventure</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip1.jpg" alt="2024 Trip Day 1">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>2024 Trip Day 1</h4>
+            <p>Starting our journey</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip10.jpg" alt="2024 Trip Activities">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Activities</h4>
+            <p>Fun and learning combined</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip11.jpg" alt="2024 Trip Highlights">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Highlights</h4>
+            <p>Unforgettable experiences</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip12.jpg" alt="2024 Trip Moments">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Moments</h4>
+            <p>Creating lasting memories</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip13.jpg" alt="2024 Trip Fun">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Fun</h4>
+            <p>Bonding and friendship</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip14.jpg" alt="2024 Trip Adventure">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Adventure</h4>
             <p>Exploring new horizons</p>
           </div>
         </div>
       </div>
       
       <div class="gallery-item" data-category="trips">
-        <img src="Gallery/food.jpg" alt="Trip Activities">
+        <img src="Gallery/24trip2.jpg" alt="2024 Trip Day 2">
         <div class="gallery-overlay">
           <div class="gallery-info">
-            <h4>Trip Experiences</h4>
-            <p>Creating lasting memories</p>
+            <h4>2024 Trip Day 2</h4>
+            <p>Continued exploration</p>
           </div>
         </div>
       </div>
-
-      <!-- More School Images -->
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc3.jpg" alt="CBC Program">
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip4.jpg" alt="2024 Trip Group">
         <div class="gallery-overlay">
           <div class="gallery-info">
-            <h4>CBC Implementation</h4>
-            <p>21st century learning skills</p>
+            <h4>Group Activities</h4>
+            <p>Teamwork and collaboration</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip5.jpg" alt="2024 Trip Learning">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Learning</h4>
+            <p>Educational experiences</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip6.jpg" alt="2024 Trip Discovery">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Discovery</h4>
+            <p>New knowledge and insights</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip7.jpg" alt="2024 Trip Exploration">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Exploration</h4>
+            <p>Discovering together</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip8.jpg" alt="2024 Trip Joy">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Joy</h4>
+            <p>Happy moments shared</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip9.jpg" alt="2024 Trip Memories">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Trip Memories</h4>
+            <p>Stories to remember</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/food.jpg" alt="Trip Meal Time">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Meal Time</h4>
+            <p>Sharing meals together</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/van.jpg" alt="School Van">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Van</h4>
+            <p>Safe transportation</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Additional School Images -->
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/BACKGROUND (1).jpg" alt="School Background">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Campus</h4>
+            <p>Our beautiful learning environment</p>
           </div>
         </div>
       </div>
       
       <div class="gallery-item" data-category="school">
-        <img src="Gallery/g1.jpg" alt="Grade 1 Activities">
+        <img src="Gallery/BACKGROUND (3).jpg" alt="Campus View">
         <div class="gallery-overlay">
           <div class="gallery-info">
-            <h4>Grade 1 Learning</h4>
-            <p>Foundation building education</p>
+            <h4>Campus View</h4>
+            <p>Modern facilities and grounds</p>
           </div>
         </div>
       </div>
       
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/awardstudent.jpg" alt="Award Ceremony">
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/IMG_5655.jpg" alt="School Activity">
         <div class="gallery-overlay">
           <div class="gallery-info">
-            <h4>Student Awards</h4>
-            <p>Recognizing excellence</p>
+            <h4>School Activity</h4>
+            <p>Engaged students learning</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/IMG_5675.jpg" alt="Classroom Scene">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Classroom Scene</h4>
+            <p>Interactive learning sessions</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/img1.jpg" alt="School Moments">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Moments</h4>
+            <p>Daily life at Heriwadi</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/back.g.jpg" alt="School Grounds">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>School Grounds</h4>
+            <p>Spacious and safe environment</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/vision.jpeg" alt="School Vision">
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Our Vision</h4>
+            <p>Excellence in holistic education</p>
           </div>
         </div>
       </div>
@@ -848,6 +1821,11 @@
       let currentImageIndex = 0;
       let currentImages = [];
 
+      // Add staggered animation delays
+      galleryItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.05}s`;
+      });
+
       // Filter functionality
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -872,7 +1850,7 @@
               } else {
                 item.style.display = 'none';
               }
-            }, index * 50);
+            }, index * 30);
           });
           
           // Update current images array for modal navigation
@@ -907,8 +1885,15 @@
       });
 
       // Navigation
-      prevBtn.addEventListener('click', () => navigateImage(-1));
-      nextBtn.addEventListener('click', () => navigateImage(1));
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigateImage(-1);
+      });
+      
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigateImage(1);
+      });
 
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
@@ -921,7 +1906,10 @@
 
       function updateCurrentImages(filter) {
         currentImages = Array.from(galleryItems)
-          .filter(item => filter === 'all' || item.getAttribute('data-category') === filter)
+          .filter(item => {
+            const isVisible = window.getComputedStyle(item).display !== 'none';
+            return (filter === 'all' || item.getAttribute('data-category') === filter) && isVisible;
+          })
           .map(item => item.querySelector('img'));
       }
 
@@ -934,7 +1922,11 @@
           currentImageIndex = currentImages.length - 1;
         }
         
-        modalImage.src = currentImages[currentImageIndex].src;
+        modalImage.style.opacity = '0';
+        setTimeout(() => {
+          modalImage.src = currentImages[currentImageIndex].src;
+          modalImage.style.opacity = '1';
+        }, 200);
       }
 
       function closeModalFunction() {
@@ -956,7 +1948,7 @@
         });
       });
 
-      // Add loading animation
+      // Add loading animation with Intersection Observer
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -995,11 +1987,15 @@
       // Enhanced button hover effects
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-2px)';
+          if (!this.classList.contains('active')) {
+            this.style.transform = 'translateY(-2px)';
+          }
         });
         
         btn.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
+          if (!this.classList.contains('active')) {
+            this.style.transform = 'translateY(0)';
+          }
         });
       });
 
@@ -1016,6 +2012,9 @@
           this.style.boxShadow = '0 8px 25px rgba(37,211,102,0.4)';
         });
       }
+
+      // Add smooth transitions for modal image
+      modalImage.style.transition = 'opacity 0.3s ease';
     });
   </script>
 </body>
