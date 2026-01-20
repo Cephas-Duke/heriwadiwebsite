@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery - Heriwadi Christian Schools</title>
-  <meta name="description" content="Explore the vibrant life, academic excellence, and memorable moments at Heriwadi Christian Schools through our photo gallery.">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,7 +13,6 @@
     :root {
       --primary-red: #b00a0a;
       --dark-red: #8b0000;
-      --light-red: #dc3545;
       --gold: #ffd700;
       --dark-blue: #1a1a2e;
       --light-gray: #f8f9fa;
@@ -22,12 +20,6 @@
       --white: #ffffff;
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
 
     body {
@@ -46,26 +38,17 @@
       100% { background-color: #e0e0e0; }
     }
 
-    .img-skeleton {
-      animation: skeleton-loading 1.5s infinite ease-in-out;
-      background-color: #e0e0e0;
-      width: 100%;
-      height: 100%;
-    }
-
     /* --- Top Bar Styles --- */
     .top-bar {
       background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
       color: white;
       padding: 10px 0;
-      position: relative;
     }
 
     .logo img {
       max-width: 80px;
       height: auto;
       border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       border: 2px solid var(--white);
     }
 
@@ -77,55 +60,21 @@
       align-items: center;
     }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-    }
-
-    .contact-item i {
-      color: var(--gold);
-    }
-
-    .contact-item a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .contact-item a:hover {
-      color: var(--gold);
-    }
+    .contact-item a { color: white; text-decoration: none; }
+    .contact-item i { color: var(--gold); margin-right: 5px; }
 
     /* --- Navbar --- */
     .navbar {
       background: linear-gradient(135deg, var(--primary-red), var(--dark-red)) !important;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      padding: 10px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: white !important;
-    }
-
-    .nav-link {
-      color: rgba(255,255,255,0.9) !important;
-      font-weight: 500;
-      margin: 0 5px;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-link:hover, .nav-link.active {
-      background: rgba(255,255,255,0.2);
-      color: var(--white) !important;
-    }
+    .navbar-brand { font-weight: 700; font-size: 1.3rem; color: white !important; }
+    .nav-link { color: rgba(255,255,255,0.9) !important; font-weight: 500; margin: 0 5px; }
+    .nav-link:hover, .nav-link.active { color: var(--white) !important; font-weight: 700; }
 
     /* --- Hero Banner --- */
     .hero-banner {
@@ -138,60 +87,32 @@
       box-shadow: var(--shadow-xl);
     }
 
-    .hero-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    .hero-banner img { width: 100%; height: 100%; object-fit: cover; }
     .hero-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(45deg, rgba(176, 10, 10, 0.8), rgba(0, 0, 0, 0.4));
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-
-    .hero-content {
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
-
-    .hero-content h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
+    .hero-content { text-align: center; color: white; }
+    .hero-content h1 { font-size: 3rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 
     /* --- Filter Buttons --- */
     .filter-container {
-      text-align: center;
-      margin: 40px 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+      text-align: center; margin: 40px 0;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
     }
 
     .filter-btn {
-      background: white;
-      color: var(--text-dark);
+      background: white; color: var(--text-dark);
       border: 2px solid var(--primary-red);
-      padding: 8px 25px;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
+      padding: 8px 25px; border-radius: 50px;
+      font-weight: 600; cursor: pointer;
       transition: all 0.3s ease;
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--primary-red);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary-red); color: white;
+      transform: translateY(-2px); box-shadow: var(--shadow-lg);
     }
 
     /* --- Gallery Grid --- */
@@ -208,143 +129,63 @@
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       background: white;
-      aspect-ratio: 4/3; /* Enforce consistent shape */
+      aspect-ratio: 4/3; 
       cursor: pointer;
       transition: transform 0.3s ease;
     }
 
-    .gallery-item:hover {
-      transform: translateY(-5px);
-    }
+    .gallery-item:hover { transform: translateY(-5px); }
 
     .gallery-item img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
       display: block;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
+    .gallery-item:hover img { transform: scale(1.1); }
 
     .gallery-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
+      opacity: 0; transition: opacity 0.3s ease;
+      display: flex; align-items: flex-end; padding: 20px;
     }
 
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
-
-    .gallery-info {
-      color: white;
-    }
-
-    .gallery-info h4 {
-      font-size: 1.1rem;
-      margin-bottom: 2px;
-      font-weight: 600;
-    }
-
-    .gallery-info p {
-      font-size: 0.85rem;
-      margin: 0;
-      opacity: 0.9;
-    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    
+    .gallery-info h4 { color: white; font-size: 1.1rem; margin: 0; }
 
     /* --- Modal --- */
     .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(5px);
+      display: none; position: fixed; z-index: 9999;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95); backdrop-filter: blur(5px);
     }
 
     .modal-content {
-      position: relative;
-      margin: auto;
-      max-width: 90%;
-      max-height: 90vh;
-      top: 50%;
-      transform: translateY(-50%);
-      display: block;
-      border-radius: 5px;
+      position: relative; margin: auto;
+      max-width: 90%; max-height: 90vh;
+      top: 50%; transform: translateY(-50%);
     }
     
-    .modal-content img {
-        max-width: 100%;
-        max-height: 90vh;
-        object-fit: contain;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 10001;
-    }
-
+    .modal-content img { max-width: 100%; max-height: 90vh; object-fit: contain; }
+    
+    .modal-close { position: absolute; top: 20px; right: 30px; color: #f1f1f1; font-size: 40px; cursor: pointer; }
     .modal-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      padding: 15px;
-      cursor: pointer;
-      font-size: 24px;
-      border-radius: 50%;
-      transition: background 0.3s;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      color: white; background: rgba(255,255,255,0.1); border: none;
+      padding: 15px; cursor: pointer; font-size: 24px; border-radius: 50%;
     }
-
-    .modal-nav:hover {
-      background: rgba(255,255,255,0.3);
-    }
-
-    .modal-prev { left: 20px; }
-    .modal-next { right: 20px; }
+    .modal-prev { left: 20px; } .modal-next { right: 20px; }
 
     /* --- Footer --- */
     .footer {
       background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
-      color: var(--white);
-      padding: 50px 0 20px;
-      margin-top: auto;
+      color: var(--white); padding: 50px 0 20px; margin-top: auto;
     }
-
-    .footer a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-    }
-    
-    .footer a:hover {
-      color: var(--gold);
-    }
-
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 2rem; }
-      .filter-btn { padding: 6px 15px; font-size: 0.9rem; }
-      .contact-info { justify-content: center; margin-top: 10px; }
-    }
+    .footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+    .footer a:hover { color: var(--gold); }
   </style>
 </head>
 <body>
@@ -359,14 +200,8 @@
           </div>
           <div class="col-12 col-md-8">
             <div class="contact-info">
-              <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <a href="tel:+254723322449">+254 723 322 449</a>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a>
-              </div>
+              <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+254723322449">+254 723 322 449</a></div>
+              <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
             </div>
           </div>
         </div>
@@ -375,9 +210,7 @@
     
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <i class="fas fa-graduation-cap me-2"></i>Heriwadi
-        </a>
+        <a class="navbar-brand" href="index.html"><i class="fas fa-graduation-cap me-2"></i>Heriwadi</a>
         <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
         </button>
@@ -396,7 +229,7 @@
 
   <section class="container">
     <div class="hero-banner">
-      <img src="Gallery/van-banner.jpg" alt="Gallery Banner" loading="eager" onerror="this.src='https://placehold.co/1200x600?text=Banner+Image'">
+      <img src="Gallery/van banner.jpg" alt="Gallery Banner" loading="eager" onerror="this.src='https://placehold.co/1200x600?text=Heriwadi+Schools'">
       <div class="hero-overlay">
         <div class="hero-content">
           <h1>Our Gallery</h1>
@@ -431,25 +264,47 @@
         <img src="Gallery/class.jpg" alt="Classroom" loading="lazy" onerror="handleImageError(this)">
         <div class="gallery-overlay"><div class="gallery-info"><h4>Classroom Learning</h4></div></div>
       </div>
+      
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/pp1.jpg" alt="PP1 Class" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Pre-Primary 1</h4></div></div>
+      </div>
+
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g1.jpg" alt="Grade 1" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Grade 1 Class</h4></div></div>
+      </div>
+
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g5.jpg" alt="Grade 5" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Grade 5 Class</h4></div></div>
+      </div>
+
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/school1.jpg" alt="School Environment" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>School Facilities</h4></div></div>
+      </div>
+
 
       <div class="gallery-item" data-category="activities">
-        <img src="Gallery/swiming-2.jpg" alt="Swimming" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>Swimming</h4></div></div>
+        <img src="Gallery/swiming 2.jpg" alt="Swimming" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Swimming Activity</h4></div></div>
       </div>
       
       <div class="gallery-item" data-category="activities">
-        <img src="Gallery/swiming-3.jpg" alt="Swimming Training" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>Training</h4></div></div>
+        <img src="Gallery/swiming 3.jpg" alt="Swimming Training" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Swimming Training</h4></div></div>
       </div>
 
-       <div class="gallery-item" data-category="activities">
-        <img src="Gallery/present-1.jpg" alt="Presentation" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>Presentation</h4></div></div>
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/present 1.jpg" alt="Presentation" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Student Presentation</h4></div></div>
       </div>
+
 
       <div class="gallery-item" data-category="trips">
         <img src="Gallery/trip1.jpg" alt="Trip" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>School Trip</h4></div></div>
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Educational Trip</h4></div></div>
       </div>
 
       <div class="gallery-item" data-category="trips">
@@ -457,34 +312,15 @@
         <div class="gallery-overlay"><div class="gallery-info"><h4>2024 Adventure</h4></div></div>
       </div>
 
+
       <div class="gallery-item" data-category="graduation">
         <img src="Gallery/grad.jpg" alt="Graduation" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>Graduation Day</h4></div></div>
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Graduation Ceremony</h4></div></div>
       </div>
       
-       <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/grad20231.jpg" alt="2023 Grad" loading="lazy" onerror="handleImageError(this)">
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/grad20231.jpg" alt="2023 Graduation" loading="lazy" onerror="handleImageError(this)">
         <div class="gallery-overlay"><div class="gallery-info"><h4>Class of 2023</h4></div></div>
-      </div>
-
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pp1.jpg" alt="PP1" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>Pre-Primary</h4></div></div>
-      </div>
-
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g1.jpg" alt="Grade 1" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>Grade 1</h4></div></div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g5.jpg" alt="Grade 5" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>Grade 5</h4></div></div>
-      </div>
-
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/school1.jpg" alt="School Env" loading="lazy" onerror="handleImageError(this)">
-        <div class="gallery-overlay"><div class="gallery-info"><h4>School Facilities</h4></div></div>
       </div>
 
     </div>
@@ -535,11 +371,11 @@
   
   <script>
     // --- Image Error Handler ---
-    // If an image path is wrong, this function replaces it with a placeholder
     function handleImageError(img) {
-        img.onerror = null; // Prevent infinite loop
+        img.onerror = null; 
         img.src = 'https://placehold.co/600x400?text=Image+Not+Found';
-        img.alt = 'Image not found';
+        // Optional: Log the missing file to console for your debugging
+        console.log("Missing image:", img.getAttribute('src'));
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -551,13 +387,12 @@
       const prevBtn = document.querySelector('.modal-prev');
       const nextBtn = document.querySelector('.modal-next');
       
-      let currentImages = []; // Array of visible images for modal nav
+      let currentImages = []; 
       let currentIndex = 0;
 
       // Filter Logic
       filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-          // Active state
           filterButtons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           
@@ -566,7 +401,6 @@
           galleryItems.forEach(item => {
             if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
               item.style.display = 'block';
-              // Trigger reflow for animation
               setTimeout(() => item.style.opacity = '1', 10);
             } else {
               item.style.display = 'none';
@@ -578,13 +412,11 @@
       });
 
       function updateModalList() {
-        // Create list of currently visible images only
         currentImages = Array.from(document.querySelectorAll('.gallery-item'))
           .filter(item => item.style.display !== 'none')
           .map(item => item.querySelector('img').src);
       }
       
-      // Initial list
       updateModalList();
 
       // Modal Logic
@@ -598,13 +430,8 @@
       });
 
       closeBtn.onclick = () => modal.style.display = "none";
-      
-      // Close on clicking outside image
-      window.onclick = (e) => {
-        if (e.target == modal) modal.style.display = "none";
-      }
+      window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
 
-      // Navigation
       function showNext(dir) {
         currentIndex += dir;
         if (currentIndex >= currentImages.length) currentIndex = 0;
@@ -615,7 +442,6 @@
       nextBtn.onclick = (e) => { e.stopPropagation(); showNext(1); };
       prevBtn.onclick = (e) => { e.stopPropagation(); showNext(-1); };
 
-      // Keyboard support
       document.addEventListener('keydown', (e) => {
         if(modal.style.display === 'block') {
            if(e.key === 'ArrowRight') showNext(1);
