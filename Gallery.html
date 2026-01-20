@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery - Heriwadi Christian Schools</title>
-  <!-- External CSS and Libraries -->
+  <meta name="description" content="Explore the vibrant life, academic excellence, and memorable moments at Heriwadi Christian Schools through our photo gallery.">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
@@ -40,82 +39,70 @@
       overflow-x: hidden;
     }
 
-    /* Top Bar Styles */
+    /* --- Skeleton Loading Animation --- */
+    @keyframes skeleton-loading {
+      0% { background-color: #e0e0e0; }
+      50% { background-color: #f0f0f0; }
+      100% { background-color: #e0e0e0; }
+    }
+
+    .img-skeleton {
+      animation: skeleton-loading 1.5s infinite ease-in-out;
+      background-color: #e0e0e0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- Top Bar Styles --- */
     .top-bar {
       background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
       color: white;
-      padding: 15px 0;
+      padding: 10px 0;
       position: relative;
-      overflow: hidden;
-    }
-
-    .top-bar::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      animation: shimmer 3s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 100%; }
     }
 
     .logo img {
       max-width: 80px;
       height: auto;
       border-radius: 50%;
-      transition: transform 0.3s ease;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    .logo img:hover {
-      transform: scale(1.1) rotate(5deg);
+      border: 2px solid var(--white);
     }
 
     .contact-info {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
       justify-content: flex-end;
+      align-items: center;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 15px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 25px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .contact-item:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
+      gap: 8px;
+      font-size: 0.9rem;
     }
 
     .contact-item i {
       color: var(--gold);
-      font-size: 1.2em;
     }
 
     .contact-item a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    /* Navbar */
+    .contact-item a:hover {
+      color: var(--gold);
+    }
+
+    /* --- Navbar --- */
     .navbar {
       background: linear-gradient(135deg, var(--primary-red), var(--dark-red)) !important;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      padding: 15px 0;
+      padding: 10px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -123,34 +110,31 @@
 
     .navbar-brand {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: white !important;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     .nav-link {
-      color: white !important;
+      color: rgba(255,255,255,0.9) !important;
       font-weight: 500;
-      padding: 10px 20px !important;
       margin: 0 5px;
-      border-radius: 25px;
+      border-radius: 20px;
       transition: all 0.3s ease;
-      position: relative;
     }
 
     .nav-link:hover, .nav-link.active {
       background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      color: var(--white) !important;
     }
 
-    /* Hero Banner */
+    /* --- Hero Banner --- */
     .hero-banner {
       position: relative;
-      height: 60vh;
-      overflow: hidden;
+      height: 50vh;
+      min-height: 300px;
       border-radius: 20px;
       margin: 30px 0;
+      overflow: hidden;
       box-shadow: var(--shadow-xl);
     }
 
@@ -158,19 +142,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 8s ease-in-out;
-    }
-
-    .hero-banner:hover img {
-      transform: scale(1.1);
     }
 
     .hero-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background: linear-gradient(45deg, rgba(176, 10, 10, 0.8), rgba(0, 0, 0, 0.4));
       display: flex;
       align-items: center;
@@ -180,79 +156,73 @@
     .hero-content {
       text-align: center;
       color: white;
-      z-index: 2;
+      padding: 20px;
     }
 
     .hero-content h1 {
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero-content p {
-      font-size: 1.4rem;
-      font-weight: 300;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      animation: fadeInUp 1s ease-out 0.5s both;
     }
 
-    /* Filter Buttons */
+    /* --- Filter Buttons --- */
     .filter-container {
       text-align: center;
-      margin: 50px 0;
+      margin: 40px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
 
     .filter-btn {
-      background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      margin: 0 10px 10px;
+      background: white;
+      color: var(--text-dark);
+      border: 2px solid var(--primary-red);
+      padding: 8px 25px;
       border-radius: 50px;
-      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: var(--shadow-lg);
     }
 
     .filter-btn:hover,
     .filter-btn.active {
-      background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-xl);
+      background: var(--primary-red);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
-    /* Gallery Grid */
+    /* --- Gallery Grid --- */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      padding: 20px 0;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      padding-bottom: 50px;
     }
 
     .gallery-item {
       position: relative;
-      border-radius: 20px;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: var(--shadow-xl);
-      transition: all 0.4s ease;
-      cursor: pointer;
+      box-shadow: var(--shadow-lg);
       background: white;
+      aspect-ratio: 4/3; /* Enforce consistent shape */
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
     .gallery-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      transform: translateY(-5px);
     }
 
     .gallery-item img {
       width: 100%;
-      height: 250px;
+      height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.5s ease;
+      display: block;
     }
 
     .gallery-item:hover img {
@@ -261,13 +231,10 @@
 
     .gallery-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
       opacity: 0;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease;
       display: flex;
       align-items: flex-end;
       padding: 20px;
@@ -279,27 +246,21 @@
 
     .gallery-info {
       color: white;
-      text-align: left;
     }
 
     .gallery-info h4 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      margin-bottom: 2px;
       font-weight: 600;
-      margin-bottom: 5px;
     }
 
     .gallery-info p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      margin: 0;
       opacity: 0.9;
     }
 
-    /* Loading Animation */
-    .gallery-item {
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    /* Modal */
+    /* --- Modal --- */
     .modal {
       display: none;
       position: fixed;
@@ -308,224 +269,103 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.95);
       backdrop-filter: blur(5px);
     }
 
     .modal-content {
       position: relative;
+      margin: auto;
       max-width: 90%;
-      max-height: 90%;
-      margin: 5% auto;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow-xl);
-    }
-
-    .modal-content img {
-      width: 100%;
-      height: auto;
+      max-height: 90vh;
+      top: 50%;
+      transform: translateY(-50%);
       display: block;
+      border-radius: 5px;
+    }
+    
+    .modal-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
     }
 
     .modal-close {
       position: absolute;
       top: 20px;
       right: 30px;
-      color: white;
+      color: #f1f1f1;
       font-size: 40px;
+      font-weight: bold;
       cursor: pointer;
-      z-index: 10000;
-      transition: color 0.3s ease;
-    }
-
-    .modal-close:hover {
-      color: var(--gold);
+      z-index: 10001;
     }
 
     .modal-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255,255,255,0.2);
       color: white;
+      background: rgba(255,255,255,0.1);
       border: none;
-      padding: 15px 20px;
-      font-size: 24px;
+      padding: 15px;
       cursor: pointer;
+      font-size: 24px;
       border-radius: 50%;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
+      transition: background 0.3s;
     }
 
     .modal-nav:hover {
       background: rgba(255,255,255,0.3);
-      transform: translateY(-50%) scale(1.1);
     }
 
-    .modal-prev {
-      left: 30px;
-    }
+    .modal-prev { left: 20px; }
+    .modal-next { right: 20px; }
 
-    .modal-next {
-      right: 30px;
-    }
-
-    /* WhatsApp Button */
-    .whatsapp-button {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      color: var(--white);
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 28px;
-      box-shadow: var(--shadow-xl);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 1000;
-      animation: pulse 2s infinite;
-    }
-
-    .whatsapp-button:hover {
-      transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
-      animation: none;
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-      }
-    }
-
-    /* Footer */
+    /* --- Footer --- */
     .footer {
       background: linear-gradient(135deg, var(--dark-blue), var(--primary-red));
       color: var(--white);
-      padding: 50px 0 30px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
-      animation: shimmer 3s infinite;
+      padding: 50px 0 20px;
+      margin-top: auto;
     }
 
     .footer a {
-      color: var(--white);
+      color: rgba(255,255,255,0.8);
       text-decoration: none;
-      transition: all 0.3s ease;
     }
-
+    
     .footer a:hover {
       color: var(--gold);
-      text-decoration: none;
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
+    /* --- Responsive --- */
     @media (max-width: 768px) {
-      .contact-info {
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero-content p {
-        font-size: 1.1rem;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-      }
-
-      .filter-btn {
-        padding: 10px 20px;
-        margin: 5px;
-        font-size: 14px;
-      }
-
-      .navbar-brand {
-        font-size: 1.3rem;
-      }
-
-      .whatsapp-button {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-        bottom: 20px;
-        right: 20px;
-      }
+      .hero-content h1 { font-size: 2rem; }
+      .filter-btn { padding: 6px 15px; font-size: 0.9rem; }
+      .contact-info { justify-content: center; margin-top: 10px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Top Bar -->
     <div class="top-bar">
       <div class="container">
         <div class="row align-items-center">
-          <!-- Logo -->
-          <div class="col-12 col-md-4 text-center text-md-start mb-3 mb-md-0">
+          <div class="col-12 col-md-4 text-center text-md-start mb-2 mb-md-0">
             <div class="logo">
-              <img src="Gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" class="img-fluid">
+              <img src="Gallery/school-logo.jpg" alt="Heriwadi Christian Schools Logo" onerror="this.src='https://placehold.co/100x100?text=Logo'">
             </div>
           </div>
-          <!-- Contact Info -->
           <div class="col-12 col-md-8">
             <div class="contact-info">
               <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <div><a href="tel:+254723322449">+254723322449</a></div>
+                <a href="tel:+254723322449">+254 723 322 449</a>
               </div>
               <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <div><a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a></div>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div><a href="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" target="_blank">Ongata Rongai</a></div>
+                <a href="mailto:heriwadics@gmail.com">heriwadics@gmail.com</a>
               </div>
             </div>
           </div>
@@ -536,1485 +376,253 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <i class="fas fa-graduation-cap me-2"></i>
-          Heriwadi Christian Schools Ltd
+          <i class="fas fa-graduation-cap me-2"></i>Heriwadi
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="fas fa-home me-1"></i>Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="About-us.html">
-                <i class="fas fa-info-circle me-1"></i>About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Admissions.html">
-                <i class="fas fa-user-graduate me-1"></i>Admissions
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Gallery.html">
-                <i class="fas fa-images me-1"></i>Gallery
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Contact-us.html">
-                <i class="fas fa-phone me-1"></i>Contact Us
-              </a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="About-us.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="Admissions.html">Admissions</a></li>
+            <li class="nav-item"><a class="nav-link active" href="Gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="Contact-us.html">Contact Us</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- Hero Banner -->
   <section class="container">
     <div class="hero-banner">
-      <img src="Gallery/van-banner.jpg" alt="Gallery Banner">
+      <img src="Gallery/van-banner.jpg" alt="Gallery Banner" loading="eager" onerror="this.src='https://placehold.co/1200x600?text=Banner+Image'">
       <div class="hero-overlay">
         <div class="hero-content">
-          <h1 class="fade-in">Our Gallery</h1>
-          <p class="fade-in-delay">Discover the vibrant life and memorable moments at Heriwadi Christian Schools</p>
+          <h1>Our Gallery</h1>
+          <p>Memorable moments at Heriwadi Christian Schools</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section -->
   <section class="container">
-    <!-- Filter Buttons -->
     <div class="filter-container">
-      <button class="filter-btn active" data-filter="all">All Photos</button>
+      <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="school">School Life</button>
       <button class="filter-btn" data-filter="graduation">Graduations</button>
       <button class="filter-btn" data-filter="activities">Activities</button>
       <button class="filter-btn" data-filter="trips">Educational Trips</button>
     </div>
 
-    <!-- Gallery Grid -->
     <div class="gallery-grid" id="galleryGrid">
-      <!-- School Life Images -->
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc.jpg" alt="CBC Learning">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>CBC Learning</h4>
-            <p>Modern curriculum in action</p>
-          </div>
-        </div>
-      </div>
       
       <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc2.jpg" alt="CBC Program 2">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>CBC Program</h4>
-            <p>Competency-based learning</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc3.jpg" alt="CBC Implementation">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>CBC Implementation</h4>
-            <p>21st century learning skills</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc4.jpg" alt="CBC Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>CBC Activities</h4>
-            <p>Hands-on learning experiences</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc5.jpg" alt="CBC Education">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>CBC Education</h4>
-            <p>Holistic development approach</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc6.jpg" alt="CBC Classroom">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>CBC Classroom</h4>
-            <p>Interactive learning environment</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/cbc7.jpg" alt="CBC Studies">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>CBC Studies</h4>
-            <p>Student-centered learning</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/class.jpg" alt="Classroom Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Classroom Learning</h4>
-            <p>Interactive education environment</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pp1.jpg" alt="Pre-Primary Education">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Pre-Primary Classes</h4>
-            <p>Early childhood development</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pp11.jpg" alt="PP1 Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>PP1 Activities</h4>
-            <p>Fun learning for young minds</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pp2.jpg" alt="PP2 Learning">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>PP2 Learning</h4>
-            <p>Building strong foundations</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pp21.jpg" alt="PP2 Class">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>PP2 Class</h4>
-            <p>Preparing for primary school</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pp22.jpg" alt="PP2 Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>PP2 Activities</h4>
-            <p>Engaging young learners</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g1.jpg" alt="Grade 1 Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 1 Learning</h4>
-            <p>Foundation building education</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g12.jpg" alt="Grade 1 Class">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 1 Class</h4>
-            <p>Starting the learning journey</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g13.jpg" alt="Grade 1 Studies">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 1 Studies</h4>
-            <p>Building literacy skills</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g21.jpg" alt="Grade 2 Learning">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 2 Learning</h4>
-            <p>Developing critical thinking</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g22.jpg" alt="Grade 2 Class">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 2 Class</h4>
-            <p>Growing academic excellence</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g23.jpg" alt="Grade 2 Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 2 Activities</h4>
-            <p>Collaborative learning</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g3.jpg" alt="Grade 3 Studies">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 3 Studies</h4>
-            <p>Advanced primary learning</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g31.jpg" alt="Grade 3 Class">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 3 Class</h4>
-            <p>Building knowledge foundation</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g32.jpg" alt="Grade 3 Learning">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 3 Learning</h4>
-            <p>Academic growth and development</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g4.jpg" alt="Grade 4 Studies">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 4 Studies</h4>
-            <p>Preparing for upper primary</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g41.jpg" alt="Grade 4 Class">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 4 Class</h4>
-            <p>Enhanced learning experiences</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g42.jpg" alt="Grade 4 Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 4 Activities</h4>
-            <p>Engaging educational content</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g5.jpg" alt="Grade 5 Learning">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 5 Learning</h4>
-            <p>Upper primary education</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/g51.jpg" alt="Grade 5 Studies">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Grade 5 Studies</h4>
-            <p>Academic excellence pursuit</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/school1.jpg" alt="School Environment">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Environment</h4>
-            <p>Modern facilities for learning</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/school2.jpg" alt="School Facilities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Facilities</h4>
-            <p>Safe and conducive learning spaces</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/brighton.jpg" alt="Brighton House">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Brighton House</h4>
-            <p>Our school community</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/green-house.jpg" alt="Green House">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Green House</h4>
-            <p>Team spirit and excellence</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/teacher.jpg" alt="Dedicated Teachers">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Dedicated Teachers</h4>
-            <p>Committed to student success</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/teachers1.jpg" alt="Teaching Staff">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Teaching Staff</h4>
-            <p>Qualified and passionate educators</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/teachers2.jpg" alt="Staff Team">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Staff Team</h4>
-            <p>Working together for excellence</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/danc.jpg" alt="School Dance">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Creative Arts</h4>
-            <p>Expressing through dance</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/earlies.jpg" alt="Early Learners">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Early Learners</h4>
-            <p>Nurturing young minds</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/earlist.jpg" alt="Youngest Students">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Youngest Students</h4>
-            <p>Beginning their journey</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pg.JPG" alt="Playground Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Playground Fun</h4>
-            <p>Physical development and play</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pg1.jpg" alt="Playground Games">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Playground Games</h4>
-            <p>Active and healthy lifestyle</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/pg2.jpg" alt="Outdoor Play">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Outdoor Play</h4>
-            <p>Learning through play</p>
-          </div>
-        </div>
+        <img src="Gallery/cbc.jpg" alt="CBC Learning" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>CBC Learning</h4></div></div>
       </div>
 
-      <!-- Graduation Images -->
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/1st-grad.jpg" alt="First Graduation">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>First Graduation</h4>
-            <p>Celebrating academic achievements</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/grad.jpg" alt="Graduation Ceremony">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Graduation Day</h4>
-            <p>Proud graduates and families</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/grad20231.jpg" alt="2023 Graduation">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>2023 Graduation</h4>
-            <p>Celebrating success together</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/grad20232.jpg" alt="2023 Graduates">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>2023 Graduates</h4>
-            <p>Ready for the next chapter</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/grad20233.jpg" alt="2023 Ceremony">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>2023 Ceremony</h4>
-            <p>Memorable graduation moments</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/grad20234.jpg" alt="2023 Celebration">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>2023 Celebration</h4>
-            <p>Joy and achievement</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradchuch.jpg" alt="Church Graduation">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Church Graduation</h4>
-            <p>Faith-based celebration</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradchurch.jpg" alt="Church Ceremony">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Church Ceremony</h4>
-            <p>Spiritual milestone celebration</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradchurch3.jpg" alt="Church Graduation 3">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Church Graduation</h4>
-            <p>Community celebration</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradestudent2.jpg" alt="Graduate Student">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Graduate Student</h4>
-            <p>Achievement and pride</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradstudent1.jpg" alt="Graduating Student">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Graduating Student</h4>
-            <p>Success story</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradstudent3.jpg" alt="Graduate Portrait">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Graduate Portrait</h4>
-            <p>Celebrating accomplishment</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradstudent4.jpg" alt="Graduate Achievement">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Graduate Achievement</h4>
-            <p>Academic excellence recognized</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/gradstudent5.jpg" alt="Student Graduate">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Student Graduate</h4>
-            <p>Future leaders emerging</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/awardstudent.jpg" alt="Award Ceremony">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Student Awards</h4>
-            <p>Recognizing excellence</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/awardstudent1.jpg" alt="Award Winner">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Award Winner</h4>
-            <p>Outstanding performance</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/revbengrad.jpg" alt="Rev Ben Graduation">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Rev Ben at Graduation</h4>
-            <p>Blessing our graduates</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="graduation">
-        <img src="Gallery/rev ben.jpg" alt="Rev Ben">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Rev Ben</h4>
-            <p>Spiritual guidance and leadership</p>
-          </div>
-        </div>
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/cbc2.jpg" alt="CBC Program" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>CBC Program</h4></div></div>
       </div>
 
-      <!-- Activities Images -->
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/animalopharnage.jpg" alt="Animal Orphanage Visit">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Animal Orphanage</h4>
-            <p>Learning about wildlife conservation</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/animalorph2.jpg" alt="Wildlife Learning">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Wildlife Learning</h4>
-            <p>Connecting with nature</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/swiming1.jpg" alt="Swimming Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Swimming Lessons</h4>
-            <p>Physical education and fun</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/swiming 2.jpg" alt="Swimming Pool">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Swimming Pool</h4>
-            <p>Water sports and fitness</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/swiming 3.jpg" alt="Swimming Training">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Swimming Training</h4>
-            <p>Building confidence in water</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/swiming4.jpg" alt="Swimming Class">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Swimming Class</h4>
-            <p>Learning essential life skills</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/ministry1.jpg" alt="Ministry Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Ministry Programs</h4>
-            <p>Spiritual development activities</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/ministry2.jpg" alt="Ministry Events">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Ministry Events</h4>
-            <p>Faith-based community</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/ministry-jean.jpg" alt="Ministry Jean">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Ministry Leadership</h4>
-            <p>Guiding spiritual growth</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/ministryrev.jpg" alt="Ministry Reverend">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Ministry Reverend</h4>
-            <p>Pastoral care and guidance</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/mission.jpg" alt="Mission Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Mission Activities</h4>
-            <p>Community outreach programs</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/parade.jpg" alt="School Parade">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Parade</h4>
-            <p>Unity and team spirit</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/games1.jpg" alt="Sports Games">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Sports Games</h4>
-            <p>Physical fitness and teamwork</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/assembly.jpg" alt="School Assembly">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Assembly</h4>
-            <p>Coming together as one</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/assembly2.jpg" alt="Morning Assembly">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Morning Assembly</h4>
-            <p>Starting the day together</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/present 1.jpg" alt="Presentation">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Student Presentation</h4>
-            <p>Building confidence and skills</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/peter.jpg" alt="Peter Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Student Activities</h4>
-            <p>Engaged and active learning</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/pst jean.jpg" alt="Pastor Jean">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Pastor Jean</h4>
-            <p>Spiritual mentorship</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/kisha.jpg" alt="Kisha Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Student Engagement</h4>
-            <p>Active participation</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/mdjean.jpg" alt="MD Jean">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Leadership</h4>
-            <p>Guiding our community</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/miniparent3.jpg" alt="Parent Involvement">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Parent Involvement</h4>
-            <p>Community partnership</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/min-parent1.jpg" alt="Parents Meeting">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Parents Meeting</h4>
-            <p>Working together for success</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/min-parent2.jpg" alt="Parent Conference">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Parent Conference</h4>
-            <p>Collaboration and communication</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/mini-parent4.jpg" alt="Family Engagement">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Family Engagement</h4>
-            <p>Building strong partnerships</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/mini-parent5.jpg" alt="Parent Day">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Parent Day</h4>
-            <p>Celebrating together</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/mini-parent6.jpg" alt="Family Event">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Family Event</h4>
-            <p>Community bonding</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/mini-parent7.jpg" alt="Parent Activity">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Parent Activity</h4>
-            <p>Engaging families</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/rachael-parent.jpg" alt="Rachael Parent">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Parent Support</h4>
-            <p>Active parent community</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="activities">
-        <img src="Gallery/tr. alice.JPG" alt="Teacher Alice">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Teacher Alice</h4>
-            <p>Dedicated educator</p>
-          </div>
-        </div>
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/class.jpg" alt="Classroom" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Classroom Learning</h4></div></div>
       </div>
 
-      <!-- Educational Trips -->
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/trip1.jpg" alt="Educational Trip">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Educational Trip</h4>
-            <p>Learning beyond the classroom</p>
-          </div>
-        </div>
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/swiming-2.jpg" alt="Swimming" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Swimming</h4></div></div>
       </div>
       
+      <div class="gallery-item" data-category="activities">
+        <img src="Gallery/swiming-3.jpg" alt="Swimming Training" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Training</h4></div></div>
+      </div>
+
+       <div class="gallery-item" data-category="activities">
+        <img src="Gallery/present-1.jpg" alt="Presentation" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Presentation</h4></div></div>
+      </div>
+
       <div class="gallery-item" data-category="trips">
-        <img src="Gallery/trip2.jpg" alt="Field Trip">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Field Trip</h4>
-            <p>Exploring new places</p>
-          </div>
-        </div>
+        <img src="Gallery/trip1.jpg" alt="Trip" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>School Trip</h4></div></div>
+      </div>
+
+      <div class="gallery-item" data-category="trips">
+        <img src="Gallery/24trip.jpg" alt="2024 Trip" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>2024 Adventure</h4></div></div>
+      </div>
+
+      <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/grad.jpg" alt="Graduation" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Graduation Day</h4></div></div>
       </div>
       
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/trip3.jpg" alt="School Excursion">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Excursion</h4>
-            <p>Adventure and discovery</p>
-          </div>
-        </div>
+       <div class="gallery-item" data-category="graduation">
+        <img src="Gallery/grad20231.jpg" alt="2023 Grad" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Class of 2023</h4></div></div>
       </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/trip4.jpg" alt="Trip Experience">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Experience</h4>
-            <p>Memorable moments together</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip.jpg" alt="2024 Trip">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>2024 School Trip</h4>
-            <p>Annual educational adventure</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip1.jpg" alt="2024 Trip Day 1">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>2024 Trip Day 1</h4>
-            <p>Starting our journey</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip10.jpg" alt="2024 Trip Activities">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Activities</h4>
-            <p>Fun and learning combined</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip11.jpg" alt="2024 Trip Highlights">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Highlights</h4>
-            <p>Unforgettable experiences</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip12.jpg" alt="2024 Trip Moments">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Moments</h4>
-            <p>Creating lasting memories</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip13.jpg" alt="2024 Trip Fun">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Fun</h4>
-            <p>Bonding and friendship</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip14.jpg" alt="2024 Trip Adventure">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Adventure</h4>
-            <p>Exploring new horizons</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip2.jpg" alt="2024 Trip Day 2">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>2024 Trip Day 2</h4>
-            <p>Continued exploration</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip4.jpg" alt="2024 Trip Group">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Group Activities</h4>
-            <p>Teamwork and collaboration</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip5.jpg" alt="2024 Trip Learning">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Learning</h4>
-            <p>Educational experiences</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip6.jpg" alt="2024 Trip Discovery">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Discovery</h4>
-            <p>New knowledge and insights</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip7.jpg" alt="2024 Trip Exploration">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Exploration</h4>
-            <p>Discovering together</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip8.jpg" alt="2024 Trip Joy">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Joy</h4>
-            <p>Happy moments shared</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/24trip9.jpg" alt="2024 Trip Memories">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Trip Memories</h4>
-            <p>Stories to remember</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/food.jpg" alt="Trip Meal Time">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Meal Time</h4>
-            <p>Sharing meals together</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="trips">
-        <img src="Gallery/van.jpg" alt="School Van">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Van</h4>
-            <p>Safe transportation</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Additional School Images -->
+
       <div class="gallery-item" data-category="school">
-        <img src="Gallery/BACKGROUND (1).jpg" alt="School Background">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Campus</h4>
-            <p>Our beautiful learning environment</p>
-          </div>
-        </div>
+        <img src="Gallery/pp1.jpg" alt="PP1" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Pre-Primary</h4></div></div>
+      </div>
+
+      <div class="gallery-item" data-category="school">
+        <img src="Gallery/g1.jpg" alt="Grade 1" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Grade 1</h4></div></div>
       </div>
       
       <div class="gallery-item" data-category="school">
-        <img src="Gallery/BACKGROUND (3).jpg" alt="Campus View">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Campus View</h4>
-            <p>Modern facilities and grounds</p>
-          </div>
-        </div>
+        <img src="Gallery/g5.jpg" alt="Grade 5" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>Grade 5</h4></div></div>
       </div>
-      
+
       <div class="gallery-item" data-category="school">
-        <img src="Gallery/IMG_5655.jpg" alt="School Activity">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Activity</h4>
-            <p>Engaged students learning</p>
-          </div>
-        </div>
+        <img src="Gallery/school1.jpg" alt="School Env" loading="lazy" onerror="handleImageError(this)">
+        <div class="gallery-overlay"><div class="gallery-info"><h4>School Facilities</h4></div></div>
       </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/IMG_5675.jpg" alt="Classroom Scene">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Classroom Scene</h4>
-            <p>Interactive learning sessions</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/img1.jpg" alt="School Moments">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Moments</h4>
-            <p>Daily life at Heriwadi</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/back.g.jpg" alt="School Grounds">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>School Grounds</h4>
-            <p>Spacious and safe environment</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="gallery-item" data-category="school">
-        <img src="Gallery/vision.jpeg" alt="School Vision">
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>Our Vision</h4>
-            <p>Excellence in holistic education</p>
-          </div>
-        </div>
-      </div>
+
     </div>
   </section>
 
-  <!-- Image Modal -->
   <div id="imageModal" class="modal">
-    <span class="modal-close">×</span>
-    <button class="modal-nav modal-prev">❮</button>
-    <button class="modal-nav modal-next">❯</button>
+    <span class="modal-close">&times;</span>
+    <button class="modal-nav modal-prev">&#10094;</button>
+    <button class="modal-nav modal-next">&#10095;</button>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
   </div>
 
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/254723322449" class="whatsapp-button" target="_blank" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/254723322449" style="position:fixed; bottom:20px; right:20px; background:#25d366; color:white; padding:15px; border-radius:50%; font-size:24px; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:9999; display:flex; align-items:center; justify-content:center;" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
-        <div class="col-md-4">
-          <h4>Quick Links</h4>
+        <div class="col-md-4 mb-4">
+          <h5>Quick Links</h5>
           <ul class="list-unstyled">
             <li><a href="index.html">Home</a></li>
-            <li><a href="About-us.html">About Us</a></li>
             <li><a href="Admissions.html">Admissions</a></li>
-            <li><a href="Gallery.html">Gallery</a></li>
-            <li><a href="Contact-us.html">Contact Us</a></li>
+            <li><a href="Contact-us.html">Contact</a></li>
           </ul>
         </div>
-        <div class="col-md-4">
-          <h4>Contact Information</h4>
-          <ul class="list-unstyled">
-            <li><i class="fas fa-map-marker-alt"></i> Ongata Rongai, Along Maasai Lodge-Rimpa Road</li>
-            <li><i class="fas fa-phone"></i> +254 723 322 449</li>
-            <li><i class="fas fa-envelope"></i> heriwadics@gmail.com</li>
-          </ul>
+        <div class="col-md-4 mb-4">
+          <h5>Contact</h5>
+          <p>Ongata Rongai<br>+254 723 322 449</p>
         </div>
-        <div class="col-md-4">
-          <h4>Follow Us</h4>
-          <div class="social-links">
-            <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f fa-lg"></i></a>
-            <a href="#" class="text-white mr-3"><i class="fab fa-twitter fa-lg"></i></a>
-            <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-lg"></i></a>
-            <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
-          </div>
-          <div class="mt-3">
-            <a href="privacy.html" class="text-white mr-2">Privacy Policy</a>
-            <a href="Terms-of-use.html" class="text-white">Terms of Use</a>
+        <div class="col-md-4 mb-4">
+          <h5>Socials</h5>
+          <div>
+            <a href="#" class="me-2"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#" class="me-2"><i class="fab fa-instagram fa-lg"></i></a>
           </div>
         </div>
       </div>
-      <hr class="bg-light">
-      <p class="text-center">© 2025 Heriwadi Christian Schools Ltd. All rights reserved.</p>
+      <hr>
+      <p>&copy; 2025 Heriwadi Christian Schools Ltd.</p>
     </div>
   </footer>
 
-  <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
   <script>
-    // Gallery functionality
+    // --- Image Error Handler ---
+    // If an image path is wrong, this function replaces it with a placeholder
+    function handleImageError(img) {
+        img.onerror = null; // Prevent infinite loop
+        img.src = 'https://placehold.co/600x400?text=Image+Not+Found';
+        img.alt = 'Image not found';
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       const filterButtons = document.querySelectorAll('.filter-btn');
       const galleryItems = document.querySelectorAll('.gallery-item');
       const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      const closeModal = document.querySelector('.modal-close');
+      const modalImg = document.getElementById('modalImage');
+      const closeBtn = document.querySelector('.modal-close');
       const prevBtn = document.querySelector('.modal-prev');
       const nextBtn = document.querySelector('.modal-next');
       
-      let currentImageIndex = 0;
-      let currentImages = [];
+      let currentImages = []; // Array of visible images for modal nav
+      let currentIndex = 0;
 
-      // Add staggered animation delays
-      galleryItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.05}s`;
-      });
-
-      // Filter functionality
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const filter = button.getAttribute('data-filter');
+      // Filter Logic
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Active state
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
           
-          // Update active button
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
+          const filterValue = btn.getAttribute('data-filter');
           
-          // Filter images with animation
-          galleryItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-              if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                item.style.display = 'block';
-                setTimeout(() => {
-                  item.style.opacity = '1';
-                  item.style.transform = 'translateY(0)';
-                }, 50);
-              } else {
-                item.style.display = 'none';
-              }
-            }, index * 30);
+          galleryItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.style.display = 'block';
+              // Trigger reflow for animation
+              setTimeout(() => item.style.opacity = '1', 10);
+            } else {
+              item.style.display = 'none';
+              item.style.opacity = '0';
+            }
           });
-          
-          // Update current images array for modal navigation
-          updateCurrentImages(filter);
+          updateModalList();
         });
       });
 
-      // Initialize with all images
-      updateCurrentImages('all');
+      function updateModalList() {
+        // Create list of currently visible images only
+        currentImages = Array.from(document.querySelectorAll('.gallery-item'))
+          .filter(item => item.style.display !== 'none')
+          .map(item => item.querySelector('img').src);
+      }
+      
+      // Initial list
+      updateModalList();
 
-      // Modal functionality
-      galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-          const img = item.querySelector('img');
-          modalImage.src = img.src;
+      // Modal Logic
+      galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const img = this.querySelector('img');
           modal.style.display = 'block';
-          
-          // Find current index in filtered images
-          const imgSrc = img.src;
-          currentImageIndex = currentImages.findIndex(imgItem => 
-            imgItem.src.includes(imgSrc.split('/').pop())
-          );
-          
-          document.body.style.overflow = 'hidden';
+          modalImg.src = img.src;
+          currentIndex = currentImages.indexOf(img.src);
         });
       });
 
-      // Close modal
-      closeModal.addEventListener('click', closeModalFunction);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModalFunction();
-      });
+      closeBtn.onclick = () => modal.style.display = "none";
+      
+      // Close on clicking outside image
+      window.onclick = (e) => {
+        if (e.target == modal) modal.style.display = "none";
+      }
 
       // Navigation
-      prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navigateImage(-1);
-      });
-      
-      nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navigateImage(1);
-      });
+      function showNext(dir) {
+        currentIndex += dir;
+        if (currentIndex >= currentImages.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = currentImages.length - 1;
+        modalImg.src = currentImages[currentIndex];
+      }
 
-      // Keyboard navigation
+      nextBtn.onclick = (e) => { e.stopPropagation(); showNext(1); };
+      prevBtn.onclick = (e) => { e.stopPropagation(); showNext(-1); };
+
+      // Keyboard support
       document.addEventListener('keydown', (e) => {
-        if (modal.style.display === 'block') {
-          if (e.key === 'Escape') closeModalFunction();
-          if (e.key === 'ArrowLeft') navigateImage(-1);
-          if (e.key === 'ArrowRight') navigateImage(1);
+        if(modal.style.display === 'block') {
+           if(e.key === 'ArrowRight') showNext(1);
+           if(e.key === 'ArrowLeft') showNext(-1);
+           if(e.key === 'Escape') modal.style.display = "none";
         }
       });
-
-      function updateCurrentImages(filter) {
-        currentImages = Array.from(galleryItems)
-          .filter(item => {
-            const isVisible = window.getComputedStyle(item).display !== 'none';
-            return (filter === 'all' || item.getAttribute('data-category') === filter) && isVisible;
-          })
-          .map(item => item.querySelector('img'));
-      }
-
-      function navigateImage(direction) {
-        currentImageIndex += direction;
-        
-        if (currentImageIndex >= currentImages.length) {
-          currentImageIndex = 0;
-        } else if (currentImageIndex < 0) {
-          currentImageIndex = currentImages.length - 1;
-        }
-        
-        modalImage.style.opacity = '0';
-        setTimeout(() => {
-          modalImage.src = currentImages[currentImageIndex].src;
-          modalImage.style.opacity = '1';
-        }, 200);
-      }
-
-      function closeModalFunction() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-
-      // Smooth scrolling for navigation
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Add loading animation with Intersection Observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      galleryItems.forEach(item => {
-        observer.observe(item);
-      });
-
-      // Preloader effect
-      window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        document.body.style.opacity = '1';
-      });
-
-      // Enhanced contact item animations
-      document.querySelectorAll('.contact-item').forEach(item => {
-        item.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-3px) scale(1.02)';
-          this.style.background = 'rgba(255,255,255,0.25)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0) scale(1)';
-          this.style.background = 'rgba(255,255,255,0.1)';
-        });
-      });
-
-      // Enhanced button hover effects
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-          if (!this.classList.contains('active')) {
-            this.style.transform = 'translateY(-2px)';
-          }
-        });
-        
-        btn.addEventListener('mouseleave', function() {
-          if (!this.classList.contains('active')) {
-            this.style.transform = 'translateY(0)';
-          }
-        });
-      });
-
-      // Enhanced WhatsApp button interaction
-      const whatsappBtn = document.querySelector('.whatsapp-button');
-      if (whatsappBtn) {
-        whatsappBtn.addEventListener('mouseenter', function() {
-          this.style.transform = 'scale(1.15) rotate(10deg)';
-          this.style.boxShadow = '0 15px 40px rgba(37,211,102,0.7)';
-        });
-        
-        whatsappBtn.addEventListener('mouseleave', function() {
-          this.style.transform = 'scale(1) rotate(0deg)';
-          this.style.boxShadow = '0 8px 25px rgba(37,211,102,0.4)';
-        });
-      }
-
-      // Add smooth transitions for modal image
-      modalImage.style.transition = 'opacity 0.3s ease';
     });
   </script>
 </body>
