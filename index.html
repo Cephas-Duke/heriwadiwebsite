@@ -14,30 +14,26 @@
             --primary-dark: #8b0000;
             --secondary: #ffd700;     /* Gold */
             --accent: #1a1a2e;        /* Dark Blue/Navy */
-            
-            /* Theme Variables */
             --dark-text: #2c3e50;
             --light-text: #f8f9fa;
             --muted: #64748b;
             --bg: #f8fafc;
             --card-bg: #ffffff;
-            --nav-bg: rgba(176, 10, 10, 0.95); /* Red Nav */
+            --nav-bg: rgba(176, 10, 10, 0.95);
             --nav-border: rgba(255, 255, 255, 0.1);
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             --nav-height: 80px;
         }
 
-        /* Dark Mode Variables */
         [data-theme="dark"] {
             --dark-text: #f1f5f9;
             --muted: #94a3b8;
-            --bg: #0f172a;        /* Deep Navy BG */
+            --bg: #0f172a;
             --card-bg: #1e293b;
             --nav-bg: rgba(15, 23, 42, 0.9);
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* --- GLOBAL RESET & UTILITIES --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
@@ -46,51 +42,39 @@
             color: var(--dark-text);
             background: var(--bg);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevents mobile side-scrolling */
+            overflow-x: hidden;
             width: 100%;
             transition: background 0.3s ease, color 0.3s ease;
-            cursor: none; /* Hide default cursor */
         }
 
-        /* --- CUSTOM CURSOR --- */
-        .cursor-dot, .cursor-outline {
-            position: fixed; top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%; z-index: 9999; pointer-events: none;
-        }
-        .cursor-dot { width: 8px; height: 8px; background: var(--secondary); }
-        .cursor-outline {
-            width: 40px; height: 40px;
-            border: 1px solid var(--secondary);
-            transition: width 0.2s, height 0.2s, background 0.2s;
-        }
-        /* Hover state */
-        body.hovering .cursor-outline {
-            width: 60px; height: 60px;
-            background: rgba(255, 215, 0, 0.1);
-            border-color: transparent;
-        }
-        /* Disable custom cursor on mobile */
-        @media (hover: none) { 
-            .cursor-dot, .cursor-outline { display: none; } 
-            body { cursor: auto; } 
-        }
-
-        /* --- LOADING SCREEN --- */
+        /* --- OPTIMIZED LOADING SCREEN (PURE CSS) --- */
         .loader {
             position: fixed; inset: 0;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            display: flex; justify-content: center; align-items: center;
-            z-index: 10000; transition: opacity 0.5s ease;
+            background: var(--bg); /* Use theme bg instead of solid color to feel smoother */
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 10000; transition: opacity 0.5s ease, visibility 0.5s ease;
         }
+        
+        /* Pure CSS Spinner - No JS required for animation */
         .spinner {
             width: 50px; height: 50px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid var(--secondary);
+            border: 4px solid rgba(176, 10, 10, 0.2);
+            border-top: 4px solid var(--primary);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
         }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        .loader h3 {
+            margin-top: 1rem;
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards 0.2s;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- NAVIGATION --- */
         nav {
@@ -110,7 +94,7 @@
             display: flex; align-items: center; gap: 10px;
             color: white; text-decoration: none; font-weight: 700; font-size: 1.2rem;
         }
-        .logo img { height: 50px; border-radius: 50%; border: 2px solid var(--secondary); }
+        .logo img { height: 50px; border-radius: 50%; border: 2px solid var(--secondary); background: white; }
         
         .nav-links { display: flex; gap: 1.5rem; align-items: center; }
         .nav-links a {
@@ -125,18 +109,18 @@
             transition: transform 0.3s;
         }
         .theme-toggle:hover { transform: rotate(15deg) scale(1.1); background: var(--secondary); color: var(--primary); }
-
         .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: white; font-size: 1.5rem; }
 
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center;
-            color: white; overflow: hidden;
-            background: var(--accent);
+            color: white; overflow: hidden; background: var(--accent);
         }
+        /* Optimized Hero Image Loading */
         .hero-bg {
             position: absolute; inset: 0; 
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Gallery/assembly2.jpg') center/cover;
+            /* Animation starts immediately via CSS */
             animation: zoomEffect 20s infinite alternate;
         }
         @keyframes zoomEffect { from { transform: scale(1); } to { transform: scale(1.1); } }
@@ -154,7 +138,16 @@
             font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); 
             line-height: 1.1; margin-bottom: 1.5rem;
         }
-        .typewriter { color: var(--secondary); border-right: 3px solid var(--secondary); animation: blink 0.75s step-end infinite; }
+        
+        /* CSS Only Typewriter (Smoother than JS) */
+        .typewriter {
+            display: inline-block;
+            color: var(--secondary);
+            border-right: 3px solid var(--secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink 0.75s step-end infinite;
+        }
         @keyframes blink { 50% { border-color: transparent; } }
 
         .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -167,7 +160,7 @@
         .btn-outline { border: 2px solid white; color: white; }
         .btn-outline:hover { background: white; color: var(--primary); transform: translateY(-3px); }
 
-        /* --- VALUES MARQUEE --- */
+        /* --- MARQUEE --- */
         .marquee-container { background: var(--secondary); padding: 15px 0; overflow: hidden; }
         .marquee-content {
             display: flex; gap: 4rem; width: max-content;
@@ -193,7 +186,7 @@
         .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
         .stat-label { color: var(--muted); font-weight: 600; }
 
-        /* --- VISION & CARDS --- */
+        /* --- VISION SECTION --- */
         .section-container { max-width: 1200px; margin: 0 auto; padding: 5rem 1.5rem; }
         .section-title { text-align: center; margin-bottom: 3rem; }
         .section-title h2 { font-family: 'Outfit', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; color: var(--dark-text); }
@@ -203,7 +196,6 @@
             width: 100%; border-radius: 20px; box-shadow: 20px 20px 0px var(--secondary); 
             transition: transform 0.4s;
         }
-        .vision-img:hover { transform: scale(1.02); box-shadow: 10px 10px 0px var(--primary); }
         
         /* --- FAQ SECTION --- */
         .faq-wrapper { max-width: 800px; margin: 0 auto; }
@@ -215,7 +207,6 @@
             padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
             font-weight: 600; color: var(--dark-text); transition: background 0.3s;
         }
-        .accordion-header:hover { background: rgba(0,0,0,0.02); }
         .accordion-content {
             max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
             padding: 0 1.5rem; color: var(--muted);
@@ -223,18 +214,6 @@
         .accordion-item.active .accordion-content { padding-bottom: 1.5rem; }
         .accordion-icon { transition: transform 0.3s; color: var(--primary); }
         .accordion-item.active .accordion-icon { transform: rotate(180deg); }
-
-        /* --- CONTACT CTA --- */
-        .contact-cta {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white; padding: 4rem 1.5rem; text-align: center;
-            position: relative; overflow: hidden;
-        }
-        .contact-cta::before {
-            content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 200%;
-            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 60%);
-            animation: rotate 20s linear infinite;
-        }
 
         /* --- FOOTER --- */
         footer { background: var(--accent); color: white; padding: 4rem 0 0; }
@@ -260,9 +239,8 @@
             font-size: 30px; box-shadow: 0 5px 20px rgba(37,211,102,0.5);
             z-index: 999; transition: transform 0.3s; text-decoration: none;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* --- RESPONSIVE ADJUSTMENTS --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 968px) {
             .nav-links {
                 position: fixed; top: var(--nav-height); left: 0; width: 100%;
@@ -271,10 +249,8 @@
             }
             .nav-links.active { clip-path: circle(150% at 100% 0); }
             .menu-toggle { display: block; }
-            
             .vision-grid { grid-template-columns: 1fr; }
             .vision-img { order: -1; margin-bottom: 2rem; }
-            
             .hero h1 { font-size: 2.5rem; }
         }
     </style>
@@ -282,14 +258,9 @@
 <body data-theme="light">
 
     <div class="loader" id="loader">
-        <div style="text-align:center; color:white;">
-            <div class="spinner" style="margin: 0 auto 15px;"></div>
-            <h3>Heriwadi Christian School</h3>
-        </div>
+        <div class="spinner"></div>
+        <h3>Heriwadi Christian School</h3>
     </div>
-
-    <div class="cursor-dot" data-cursor-dot></div>
-    <div class="cursor-outline" data-cursor-outline></div>
 
     <nav>
         <div class="nav-inner">
@@ -318,7 +289,7 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="hero-badge">Enrollment Open for 2025</div>
-            <h1>Nurturing the next generation of <br><span class="typewriter" id="typewriter"></span></h1>
+            <h1>Nurturing the next generation of <br><span class="typewriter" id="typewriter">Leaders.</span></h1>
             <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left:auto; margin-right:auto;">
                 Heriwadi Christian School combines academic excellence with Christian values to create holistic leaders.
             </p>
@@ -346,15 +317,15 @@
     <section class="stats-section">
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number" data-target="15">0</div>
+                <div class="stat-number" data-target="10">0</div>
                 <div class="stat-label">Years of Excellence</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-number" data-target="400">0</div>
                 <div class="stat-label">Happy Students</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" data-target="30">0</div>
+                <div class="stat-number" data-target="20">0</div>
                 <div class="stat-label">Dedicated Teachers</div>
             </div>
             <div class="stat-card">
@@ -379,7 +350,7 @@
                 </ul>
                 <a href="About-us.html" class="btn btn-primary" style="margin-top:2rem; display:inline-block;">Read Principal's Welcome</a>
             </div>
-            <img src="Gallery/vision.jpeg" alt="Students Learning" class="vision-img">
+            <img src="Gallery/vision.jpeg" alt="Students Learning" class="vision-img" loading="lazy">
         </div>
     </section>
 
@@ -396,7 +367,7 @@
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
-                    <p>Yes, we have a fleet of well-maintained buses covering Ongata Rongai, Kiserian, and environs. Routes are optimized for safety and punctuality.</p>
+                    <p>Yes, we have a fleet of well-maintained buses covering Ongata Rongai, Kiserian, and environs.</p>
                 </div>
             </div>
             
@@ -406,7 +377,7 @@
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
-                    <p>We integrate biblical values into our daily routine through morning devotions, pastoral guidance, and a culture of respect and integrity.</p>
+                    <p>We integrate biblical values into our daily routine through morning devotions, pastoral guidance, and a culture of respect.</p>
                 </div>
             </div>
             
@@ -416,19 +387,8 @@
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
-                    <p>Requirements include a birth certificate, previous report forms (if transferring), and a brief interview with the student. Visit our Admissions page for details.</p>
+                    <p>Requirements include a birth certificate, previous report forms (if transferring), and a brief interview with the student.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact-cta">
-        <div style="position:relative; z-index:2;">
-            <h2 style="font-size:2.5rem; margin-bottom:1rem;">Secure Your Child's Future</h2>
-            <p style="margin-bottom:2rem; opacity:0.9;">Applications are now open. Schedule a school tour today.</p>
-            <div class="btn-group">
-                <a href="tel:+254723322449" class="btn" style="background:white; color:var(--primary);"><i class="fas fa-phone"></i> Call Us</a>
-                <a href="https://wa.me/254723322449" class="btn" style="background:#25d366; color:white;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </section>
@@ -461,19 +421,12 @@
                 <ul>
                     <li><i class="fas fa-phone" style="color:var(--secondary); width:20px;"></i> +254 723 322 449</li>
                     <li><i class="fas fa-envelope" style="color:var(--secondary); width:20px;"></i> heriwadics@gmail.com</li>
-                    <li><i class="fas fa-clock" style="color:var(--secondary); width:20px;"></i> Mon - Fri: 8:00 AM - 5:00 PM</li>
                 </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Find Us</h4>
-                <iframe src="https://www.google.com/maps?q=ONGATA+RONGAI,+ALONG+MAASAI+LODGE-RIMPA+ROAD" 
-                    width="100%" height="150" style="border:0; border-radius:10px; opacity:0.8;" loading="lazy"></iframe>
             </div>
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 Heriwadi Christian Schools. All Rights Reserved. | <a href="Terms-of-use.html" style="color:var(--muted);">Terms</a> & <a href="privacy.html" style="color:var(--muted);">Privacy</a></p>
+            <p>© 2025 Heriwadi Christian Schools. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -482,28 +435,16 @@
     </a>
 
     <script>
-        // --- LOADING SCREEN ---
-        window.addEventListener('load', () => {
+        // --- FAST LOADING LOGIC ---
+        // Instead of waiting for 'window.load' (all images), we use a timeout
+        document.addEventListener("DOMContentLoaded", function() {
             const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 500);
-        });
-
-        // --- CUSTOM CURSOR ---
-        const cursorDot = document.querySelector("[data-cursor-dot]");
-        const cursorOutline = document.querySelector("[data-cursor-outline]");
-        
-        window.addEventListener("mousemove", (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-        });
-
-        document.querySelectorAll('a, button, .accordion-header').forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+            
+            // Force remove loader after 1.2 seconds max, regardless of images
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+            }, 1200); 
         });
 
         // --- DARK MODE ---
@@ -522,44 +463,20 @@
         
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuToggle.querySelector('i').classList.toggle('fa-times');
+            const menuIcon = menuToggle.querySelector('i');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
         });
 
-        // --- TYPEWRITER EFFECT ---
-        const words = ["Leaders.", "Believers.", "Innovators.", "Achievers."];
+        // --- JS TYPEWRITER (Simple) ---
+        const words = ["Leaders.", "Believers.", "Innovators."];
         let i = 0;
+        const typeEl = document.getElementById('typewriter');
         
-        function typeWriter() {
-            const element = document.getElementById('typewriter');
-            const word = words[i];
-            let charIndex = 0;
-            
-            const type = setInterval(() => {
-                element.textContent += word[charIndex];
-                charIndex++;
-                if(charIndex === word.length) {
-                    clearInterval(type);
-                    setTimeout(erase, 1500);
-                }
-            }, 100);
-        }
-
-        function erase() {
-            const element = document.getElementById('typewriter');
-            const word = element.textContent;
-            let charIndex = word.length;
-            
-            const eraseInterval = setInterval(() => {
-                element.textContent = word.substring(0, charIndex - 1);
-                charIndex--;
-                if(charIndex === 0) {
-                    clearInterval(eraseInterval);
-                    i = (i + 1) % words.length;
-                    typeWriter();
-                }
-            }, 50);
-        }
-        typeWriter();
+        setInterval(() => {
+            i = (i + 1) % words.length;
+            typeEl.textContent = words[i];
+        }, 3000); // Rotates word every 3 seconds
 
         // --- ACCORDION ---
         document.querySelectorAll('.accordion-header').forEach(header => {
@@ -580,7 +497,7 @@
             });
         });
 
-        // --- ANIMATED COUNTERS (STATS) ---
+        // --- ANIMATED COUNTERS ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -607,7 +524,6 @@
         
         const statsSection = document.querySelector('.stats-section');
         if(statsSection) observer.observe(statsSection);
-
     </script>
 </body>
 </html>
